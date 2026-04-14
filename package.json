@@ -2,7 +2,16 @@
   "name": "@fitness/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve fitness -o",
+    "build": "nx build fitness",
+    "watch": "nx build fitness --watch",
+    "test": "nx test fitness",
+    "lint": "nx lint fitness",
+    "e2e": "nx e2e fitness-e2e",
+    "graph": "nx graph",
+    "help": "nx help"
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "~21.2.0",
