@@ -20,7 +20,10 @@
             "input": "apps/fitness/public"
           }
         ],
-        "styles": ["apps/fitness/src/styles.scss"],
+        "styles": [
+          "apps/fitness/src/styles.scss",
+          "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+        ],
         "server": "apps/fitness/src/main.server.ts",
         "ssr": {
           "entry": "apps/fitness/src/server.ts"
