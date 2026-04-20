@@ -1,0 +1,23 @@
+ 
+
+<p-iconfield>
+  <p-inputicon class="pi"
+  [class]="{
+  'pi-envelope' : type()=='email',
+  'pi-user' : type()=='text',
+  'pi-lock' : type()=='password'
+   } " />
+  <input
+  pInputText
+    [type]="type()"
+    [id]="id()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled() || disabledFlag()"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    class="px-4 py-2 w-77.75! border rounded-[20px]! text-sm! focus:border-gray-200! placeholder:text-gray-200 placeholder:text-sm placeholder:font-Baloo-Thambi-2 font-Baloo-Thambi-2 focus:outline-none disabled:bg-gray-100"
+    [class.border-gray-200]="ngControl?.control?.valid || !ngControl?.control?.touched"
+    [class.border-[#F04438]!]="ngControl?.control?.invalid && ngControl?.control?.touched"
+  />
+</p-iconfield>

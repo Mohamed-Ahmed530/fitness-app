@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400..800&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -24,6 +25,7 @@ body {
     --color-gray-900-alpha-20: #24242433;
 
     --font-main: 'Inter', sans-serif;
+    --font-Baloo-Thambi-2: "Baloo Thambi 2"
 
     --text-13: 13px;
     --text-16: 16px;
@@ -42,6 +44,8 @@ body {
     --color-gray-alpha: var(--color-gray-900-alpha-20);
 
     --font-inter: var(--font-main);
+    --font-Baloo-Thambi-2: var(--font-Baloo-Thambi-2);
+
 
     --text-13px: var(--text-13);
     --text-16px: var(--text-16);
