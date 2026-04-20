@@ -23,7 +23,7 @@ export class InputFieldComponent implements ControlValueAccessor {
   disabledFlag = input<boolean>(false);
   value = signal<any>('');
   disabled = signal<boolean>(false);
-  nameControl = input<AbstractControl | null>();
+ 
 
   onChange: (value: any) => void = () => { };
   onTouched: () => void = () => { };
