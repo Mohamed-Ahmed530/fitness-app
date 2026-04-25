@@ -1,20 +1,21 @@
 <div class="marquee-wrapper w-full overflow-hidden py-5 flex bg-main">
-    <div class="marquee-track flex animate-scroll-infinite w-max font-inter font-bold text-2xl uppercase text-gray-100 text-nowrap">
+    <div
+        class="marquee-track flex animate-scroll-infinite w-max font-inter font-bold text-2xl uppercase text-gray-100 text-nowrap">
         <div class="marquee-group flex items-center justify-start min-w-max gap-3.75 pe-3.75">
             @for (item of items; track $index) {
-                <i class="pi pi-sparkles text-2xl!"></i>
+            <span>✦</span>
             <span class="marquee-item ">{{ item }}</span>
             }
         </div>
         <div class="marquee-group flex items-center justify-start min-w-max gap-3.75 pe-3.75">
             @for (item of items; track $index) {
-                   <i class="pi pi-sparkles text-2xl!"></i>
+            <span>✦</span>
             <span class="marquee-item ">{{ item }}</span>
             }
         </div>
         <div class="marquee-group flex items-center justify-start min-w-max gap-3.75 pe-3.75">
             @for (item of items; track $index) {
-            <i class="pi pi-sparkles text-2xl!"></i>
+            <span>✦</span>
             <span class="marquee-item ">{{ item }}</span>
             }
         </div>
