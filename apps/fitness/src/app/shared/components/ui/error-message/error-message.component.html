@@ -1,0 +1,19 @@
+@if (nameControl() && nameControl()?.touched && nameControl()?.errors) {
+    <div
+        class="flex items-start gap-2 mt-1 mb-3 p-1 rounded-xl border border-red-200 bg-red-50 text-red-700 shadow-sm transition-all duration-300">
+        <i class="fa-solid fa-exclamation fa-shake"></i>
+        <ul class="space-y-1 text-sm font-medium list-disc list-inside">
+            @if (nameControl()?.getError('required')) {
+                <li>This field is required.</li>
+            } @else if (nameControl()?.getError('minlength')) {
+                <li>Minimum required: 3 characters.</li>
+            } @else if (nameControl()?.getError('maxlength')) {
+                <li>Maximum required: 20 characters.</li>
+            } @else if (nameControl()?.getError('email')) {
+                <li>Please enter a valid email address.</li>
+            } @else if (nameControl()?.getError('pattern')) {
+                <li>Invalid pattern.</li>
+            }
+        </ul>
+    </div>
+}
