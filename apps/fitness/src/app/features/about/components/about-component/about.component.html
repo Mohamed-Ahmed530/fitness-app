@@ -1,13 +1,13 @@
-<div class="grid grid-cols-1 xl:grid-cols-2 px-20 py-10 bg-gray-100 gap-20">
-    <div class="relative hidden xl:block">
-        <img src="/icons/about1.png" alt="about image">
-        <img src="/icons/about2.png" class="absolute -right-12 top-20 " alt="about image">
-        <img src="/icons/about3.png" class="absolute -right-12 top-72 " alt="about image">
+<div class="grid grid-cols-1 md:grid-cols-2 px-20 py-10 bg-gray-100 dark:bg-gray-900  gap-20">
+    <div class="relative h-175 md:h-auto">
+        <img src="/icons/about1.png" alt="about image" class="absolute left-0 top-0 max-w-full h-auto hover:scale-105 hover:z-10 duration-500">
+        <img src="/icons/about2.png" class="absolute -right-12 top-20 max-w-full h-auto hover:scale-105 duration-500" alt="about image">
+        <img src="/icons/about3.png" class="absolute -right-12 top-72 max-w-full h-auto hover:scale-105 duration-500" alt="about image">
     </div>
     <div>
         <app-section-name sectionName="about us" sectionTitle="workouts" [centerAlignment]="false"></app-section-name>
 
-        <h3 class="font-Baloo-Thambi-2 font-bold text-4xl text-gray-900">EMPOWERING YOU TO ACHIEVE <span
+        <h3 class="title-background relative z-10 font-Baloo-Thambi-2 font-bold text-4xl text-gray-900 dark:text-gray-100">EMPOWERING YOU TO ACHIEVE <span
                 class="text-main">YOUR FITNESS </span>GOALS</h3>
 
         <p class="mt-6 text-lg font-Rubik">We believe fitness is more than just a workout—it's a lifestyle. With top-of-
@@ -16,23 +16,23 @@
 
         <div class="grid grid-cols-2 mt-8 ">
             @for (goal of goals; track $index) {
-            <div class=" border-[#24242424] py-8 " [class.border-b]="$index === 0 || $index === 1">
+            <div class="group/goal border-[#24242424] py-8 " [class.border-b]="$index === 0 || $index === 1">
                 <div class="flex items-center gap-4">
-                    <img [src]="goal.img" alt="goal icon">
-                    <h4 class="font-Baloo-Thambi-2 font-bold text-gray-900">
+                    <img [src]="goal.img" class="group-hover/goal:rotate-45 duration-500" alt="goal icon">
+                    <h4 class="font-Baloo-Thambi-2 font-bold text-gray-900 dark:text-gray-100">
                         {{goal.title}}
                     </h4>
                 </div>
-                <p class="mt-4 pe-1 font-Baloo-Thambi-2  text-gray-900 ">{{goal.description}}</p>
+                <p class="mt-4 pe-1 font-Baloo-Thambi-2  text-gray-900 dark:text-gray-100">{{goal.description}}</p>
             </div>
 
             }
         </div>
-        <div class="relative w-fit cursor-pointer ">
-            <button class="rounded-full bg-main text-gray-100 font-Rubik font-semibold py-4 px-7.5 cursor-pointer">Get
+        <div class="relative w-fit cursor-pointer">
+            <button class="peer/btn hover:bg-main-hover duration-500 rounded-full bg-main text-gray-100 font-Rubik font-semibold py-4 px-7.5 cursor-pointer">Get
                 Started</button>
             <div
-                class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 bg-main py-[8.32px] px-[7.64px] rounded-full border-2 border-gray-100 flex justify-center items-center w-fit">
+                class="peer-hover/btn:rotate-45 peer-hover/btn:bg-main-hover duration-500 cursor-pointer absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 bg-main py-[8.32px] px-[7.64px] rounded-full border-2 dark:border-gray-900 border-gray-100 flex justify-center items-center w-fit">
                 <img src="/icons/whiteArrow.png" alt="arrow icon">
             </div>
 
