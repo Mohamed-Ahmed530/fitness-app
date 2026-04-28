@@ -14,5 +14,7 @@ export class ButtonComponent {
   disabled = input<boolean>(false);
   parentForm = input<FormGroup>();
   styleClass = input<string>('');
+  icon = input<string>('');
+  iconPos = input<'left' | 'right'>('left');
   type = input<'button' | 'submit' | 'reset'>('button');
 }

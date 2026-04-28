@@ -1,7 +1,18 @@
-<p>register works!</p>
+<!-- <p>register works!</p> -->
 
-<!-- test only -->
-<!-- <app-button [label]="'register'" [loading]="false" [disabled]="false"  [styleClass]="'!text-black'" [type]="'submit'" [parentForm]="registerForm"></app-button> -->
-<!-- <app-label [for]="'test'" [styleClass]="'sr-only'">Email</app-label> -->
-<!-- <app-input [id]="'test'" [type]="'text'" [placeholder]="'name'" [disabledFlag]="false" ></app-input> -->
-<!-- <app-error-message [nameControl]=""></app-error-message> -->
+<!--! test reusable component only -->
+
+<app-auth-header [title]="'create an account'" [subtitle]="'Hey There'"></app-auth-header>
+
+<app-auth-card>
+
+    <div class="flex flex-col justify-center items-center gap-2">
+        
+        <app-label [for]="'test'" [styleClass]="'sr-only'">Email</app-label>
+        <app-input [id]="'test'" [type]="'text'" [placeholder]="'name'" [disabledFlag]="false" ></app-input>
+        <!-- <app-error-message [nameControl]=""></app-error-message> -->
+        <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
+        <app-button [label]="'register'" [loading]="false" [disabled]="false"  [styleClass]="'!text-black'" [type]="'submit'"></app-button>
+    </div>
+
+</app-auth-card>
