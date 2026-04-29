@@ -1,13 +1,21 @@
-<section class="flex min-h-screen bg-[#00000040] bg-[radial-gradient(circle,#3d3d3d_0%,#121212_100%)]">
-
-        <div class="hidden lg:block lg:w-1/2 border-r-2 border-solid border-r-[#FF410033] bg-[#1a1a1a] bg-[radial-gradient(circle,#3d3d3d_0%,#121212_100%)]">
-            <app-auth-side-panel></app-auth-side-panel>
-        </div>
+<section class="flex min-h-screen bg-[#24242433] bg-[radial-gradient(circle,#3d3d3d_0%,#121212_100%)]">
     
-        <div class="w-full lg:w-1/2 flex justify-center items-center bg-[#00000040] bg-[radial-gradient(circle,#3d3d3d_0%,#121212_100%)]">
+    <div class="hidden lg:block lg:w-1/2 border-r-2 border-solid border-r-[#FF410033]">
+        <app-auth-side-panel></app-auth-side-panel>
+    </div>
+    
+    <div class="w-full lg:w-1/2 flex flex-col justify-center items-center ">
+        
+        <button (click)="toggleTheme()" class="self-end mt-4 me-4">
+            <i class="pi text-3xl! cursor-pointer hover:text-orange-500 duration-300" 
+            [class]="{'pi-moon' : _themeService.theme()==='dark',
+            'pi-sun' : _themeService.theme()==='light'}"></i>
+        </button>
+
+        <div class="h-full flex justify-center items-center ">
             <router-outlet></router-outlet>
             <!-- Register , Login , Forgot Password -->
         </div>
-
+    </div>
+    
 </section>
-
