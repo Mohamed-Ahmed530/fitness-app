@@ -11,7 +11,7 @@ import { ThemeService } from '../../../shared/services/theme-service/theme.servi
 })
 export class AuthLayoutComponent {
 
-   readonly _themeService = inject(ThemeService);
+  readonly _themeService = inject(ThemeService);
 
   toggleTheme() {
   const current = localStorage.getItem('theme');
