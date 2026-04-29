@@ -1,1 +1,27 @@
-<p>login works!</p>
+<section class=" border border-gray-900 dark:border-gray-200 rounded-[50px] p-10 flex flex-col justify-center items-center gap-2">
+    <h1 class="font-Baloo-Thambi-2 font-extrabold text-2xl text-gray-900 dark:text-white">Login</h1>
+
+    <form class="flex flex-col justify-center items-center gap-2" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <!-- email -->
+        <div>
+            <app-input-field formControlName="email" id='email' type='email' placeholder="Email"></app-input-field>
+        </div>
+
+        <!-- password -->
+        <div class="relative mt-2">
+            <app-input-field formControlName="password" id='password' [type]="togglePassword() ? 'text' : 'password'"
+                placeholder="Password"></app-input-field>
+            @if (togglePassword()) {
+            <span (click)="togglePasswordVisibility()" class="absolute cursor-pointer top-1/2 -translate-y-1/2 right-3">
+                <i class="pi pi-eye text-gray-900! dark:text-gray-200!"></i> </span>
+            }@else {
+            <span (click)="togglePasswordVisibility()" class="absolute cursor-pointer top-1/2 -translate-y-1/2 right-3">
+                <i class="pi pi-eye-slash text-gray-900! dark:text-gray-200!"></i> </span>
+            }
+        </div>
+        <a routerLink="/auth/forgot-password" class="font-Baloo-Thambi-2 font-bold text-main ms-auto underline">Forget Password ?</a>
+        <button type="submit" class="bg-main text-white font-Baloo-Thambi-2 font-bold py-2 px-4 rounded-[20px] hover:bg-orange-500 transition duration-300">Login</button>
+    </form>
+        <a routerLink="/auth/register" class="font-Baloo-Thambi-2 text-white m-auto capitalize">Dont have an account yet ? <span class="font-bold text-main underline">Register</span></a>
+
+</section>
