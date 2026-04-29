@@ -1,7 +1,7 @@
 @import "tailwindcss";
+@import "primeicons/primeicons.css";
 @custom-variant dark (&:where(.dark, .dark *));
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import "primeicons/primeicons.css";
 html {
     scroll-behavior: smooth;
 }
@@ -24,7 +24,6 @@ body {
     --color-gray-900: #242424;
     --color-gray-900-alpha-20: #24242433;
 
-   
 
     --text-13: 13px;
     --text-16: 16px;

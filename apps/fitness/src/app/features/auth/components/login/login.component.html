@@ -4,13 +4,13 @@
     <form class="flex flex-col justify-center items-center gap-2" [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <!-- email -->
         <div>
-            <app-input-field formControlName="email" id='email' type='email' placeholder="Email"></app-input-field>
+            <app-input formControlName="email" id='email' type='email' placeholder="Email"></app-input>
         </div>
 
         <!-- password -->
         <div class="relative mt-2">
-            <app-input-field formControlName="password" id='password' [type]="togglePassword() ? 'text' : 'password'"
-                placeholder="Password"></app-input-field>
+            <app-input formControlName="password" id='password' [type]="togglePassword() ? 'text' : 'password'"
+                placeholder="Password"></app-input>
             @if (togglePassword()) {
             <span (click)="togglePasswordVisibility()" class="absolute cursor-pointer top-1/2 -translate-y-1/2 right-3">
                 <i class="pi pi-eye text-gray-900! dark:text-gray-200!"></i> </span>

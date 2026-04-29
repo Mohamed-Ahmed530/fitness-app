@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 export class ThemeService {
   private _PLATFORM_ID = inject(PLATFORM_ID);
   theme = signal<string>('light');
+  private document = inject(DOCUMENT);
 
   constructor() {
     if (isPlatformBrowser(this._PLATFORM_ID)) {
@@ -31,7 +32,7 @@ export class ThemeService {
         theme === 'dark' || 
         (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
         
-      document.documentElement.classList.toggle('dark', isDark);
+      this.document.documentElement.classList.toggle('dark', isDark);
     }
   }
 }

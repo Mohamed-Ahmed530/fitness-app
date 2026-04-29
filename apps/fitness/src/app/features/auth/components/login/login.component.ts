@@ -1,12 +1,12 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { InputFieldComponent } from "apps/fitness/src/app/shared/ui/input-field/input-field.component";
+import { InputComponent } from 'apps/fitness/src/app/shared/components/ui/input/input.component';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  imports: [InputFieldComponent,ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink,InputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

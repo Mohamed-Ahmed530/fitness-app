@@ -4,13 +4,13 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 @Component({
-  selector: 'app-input-field',
+  selector: 'app-input',
   imports: [ReactiveFormsModule,IconFieldModule, InputIconModule, InputTextModule],
-  templateUrl: './input-field.component.html',
-  styleUrl: './input-field.component.scss',
+  templateUrl: './input.component.html',
+  styleUrl: './input.component.scss',
  
 })
-export class InputFieldComponent implements ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
