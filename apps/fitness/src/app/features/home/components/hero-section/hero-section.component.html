@@ -1,77 +1,64 @@
-<section class="relative min-h-[40vh] flex items-center py-10 w-[90%] mx-auto">
+<section class="relative">
+    <div class="lg:flex justify-center items-center">
+        <div class="w-full lg:w-3/5 flex flex-col justify-center py-2 gap-4 lg:gap-16">
+            <h1 class="font-Baloo-Thambi-2 text-2xl lg:text-6xl text-black dark:text-white font-bold uppercase leading-tight">
+                <span class="block lg:inline">Your body can </span>
+                <span class="text-main block lg:inline">Stand Almost </span>
+                <span class="block lg:inline">Anything</span>
+            </h1>
+
+            <div class="border-l-4 border-main pl-6 max-w-lg text-lg text-black dark:text-white font-Rubik font-normal">
+                It's your mind that needs convincing. Push past your limits, stay 
+                committed, and watch as your body transform into powerhouse of 
+                strength and resilience. Start your journey today & truly capable of!
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="stat-item">
+                    <h3 class="text-2xl font-bold font-inter">1200+</h3>
+                    <p class="text-lg font-normal font-Rubik capitalize">Active Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="text-2xl font-bold font-inter">12+</h3>
+                    <p class="text-lg font-normal font-Rubik capitalize">Certified Trainers</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="text-2xl font-bold font-inter">20+</h3>
+                    <p class="text-lg font-normal font-Rubik capitalize">Years Of Experience</p>
+                </div>
+            </div>
     
-    <div class="flex-1 z-10">
-        <!-- Main Heading -->
-        <h1 class="text-6xl font-black uppercase leading-tight max-w-2xl mb-6">
-        Your Body Can <span class="text-main">Stand</span> <br />
-        <span class="text-main">Almost</span> Anything
-        </h1>
-
-        <!-- Description with Left Border -->
-        <div
-        class="border-l-4 border-main pl-6 mb-12 max-w-lg text-gray-600 font-medium italic"
-        >
-        It’s your mind that needs convincing. Push past your limits, stay
-        committed, and watch as your body transforms into a powerhouse of strength
-        and resilience.
-        </div>
-
-        <!-- Statistics Section -->
-        <div class="flex gap-16 mb-12">
-        <div class="stat-item">
-            <h3 class="text-3xl font-bold">1200+</h3>
-            <p class="text-gray-500 font-medium">Active Members</p>
-        </div>
-        <div class="stat-item">
-            <h3 class="text-3xl font-bold">12+</h3>
-            <p class="text-gray-500 font-medium">Certified Trainers</p>
-        </div>
-        <div class="stat-item">
-            <h3 class="text-3xl font-bold">20+</h3>
-            <p class="text-gray-500 font-medium">Years Of Experience</p>
-        </div>
-        </div>
-
-        <!-- CTA Buttons (نفس ستايل الـ Navbar اللي عملناه) -->
-        <div class="flex gap-6 items-center">
-        <!-- Get Started Button -->
-        <div class="flex justify-center items-center group">
-            <button
-            class="bg-main cursor-pointer text-white py-3 px-8 rounded-full font-bold uppercase transition-all duration-200 hover:bg-main-hover"
-            >
-            Get Started
-            </button>
-            <div
-            class="bg-main w-10 h-10 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
-            >
-            <img src="/icons/whiteArrow.png" alt="Arrow" class="w-5 h-5" />
+            <div class="flex justify-center lg:justify-start items-center gap-8">
+                <a class="flex justify-center items-center group cursor-pointer">
+                    <button
+                    class="bg-main w-[133px] h-[50px] lg:w-[151px] lg:h-[50px] cursor-pointer text-sm lg:text-16px text-white rounded-[100px] font-Rubik font-semibold uppercase transition-all duration-200 hover:bg-main-hover"
+                    >
+                    Get Started
+                    </button>
+                    <div
+                    class="bg-main w-9 h-9 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
+                    >
+                    <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4" />
+                    </div>
+                </a>
+        
+                <a class="flex justify-center items-center group cursor-pointer">
+                    <button
+                    class="border w-[133px] h-[50px] lg:w-[163px] lg:h-[50px] cursor-pointer text-sm lg:text-16px border-main text-main rounded-[100px] font-Rubik font-semibold uppercase transition-all duration-200 hover:bg-main hover:text-white"
+                    >
+                    Explore More
+                    </button>
+                    <div
+                    class="bg-main w-9 h-9 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
+                    >
+                    <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4" />
+                    </div>
+                </a>
             </div>
         </div>
-
-        <!-- Explore More Button -->
-        <div class="flex justify-center items-center group">
-            <button
-            class="border-2 cursor-pointer border-main text-main py-3 px-8 rounded-full font-bold uppercase transition-all duration-200 hover:bg-main hover:text-white"
-            >
-            Explore More
-            </button>
-            <div
-            class="bg-main w-10 h-10 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
-            >
-            <img src="/icons/whiteArrow.png" alt="Arrow" class="w-5 h-5" />
-            </div>
+        
+        <div class="w-full mt-8 lg:w-2/5 h-full flex justify-center items-center lg:justify-end lg:items-end overflow-hidden pointer-events-none">
+            <img ngSrc="/images/hero-model.png" alt="Fitness Model" width="467" height="719" priority class="opacity-90 w-[343px] lg:w-[467px] h-auto object-contain" />
         </div>
-        </div>
-    </div>
-    
-    <div
-        class="absolute right-0 bottom-0 w-1/2 h-full flex justify-end items-end overflow-hidden pointer-events-none"
-    >
-        <img
-        src="/images/hero-model.png"
-        alt="Fitness Model"
-        class="max-h-[95%] object-contain"
-        />
     </div>
 </section>
-
