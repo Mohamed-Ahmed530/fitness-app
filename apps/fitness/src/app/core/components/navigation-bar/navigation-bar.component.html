@@ -1,0 +1,43 @@
+<header class="w-[90%] mx-auto">
+    <p-menubar [model]="items">
+        <ng-template #start>
+            <img src="/icons/logo.png" alt="Fitness Logo" class="w-[87px]" />
+        </ng-template>
+
+        <ng-template #item let-item>
+            <a [routerLink]="item.routerLink" routerLinkActive="text-main" pRipple class="flex justify-center items-center px-4 py-3 cursor-pointer gap-2 text-black no-underline transition-colors duration-300 hover:text-main">
+                <span class="font-Baloo-Thambi-2 font-bold text-xl">
+                    {{ item.label }}
+                </span>
+            </a>
+        </ng-template>
+
+        <ng-template #end>
+            <div class="flex items-center gap-2">
+
+                @if (isLoggedIn()) {
+                    <button class="w-[47px] h-[47px] bg-main rounded-full cursor-pointer">
+                        <i class="pi pi-user"></i>
+                    </button>
+                }@else {
+                    <div class="flex">
+                        <div class="flex justify-center items-center group">
+                            <a routerLink="/auth/login" class="text-16px text-white bg-main hover:bg-main-hover font-Baloo-Thambi-2 font-bold uppercase cursor-pointer py-2 px-4 rounded-[20px] transition-all duration-200">login</a>
+                            <div class="bg-main w-9 h-9 border-2 solid border-white -translate-x-2 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
+                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4.5 h-4.5">
+                            </div>
+                        </div>
+                        <div class="flex justify-center items-center group">
+                            <a routerLink="/auth/register" class="text-16px text-main hover:text-main-hover font-Baloo-Thambi-2 font-bold uppercase cursor-pointer py-2 px-4 border border-solid border-main hover:border-main-hover rounded-[20px] transition-all duration-200">sign up</a>
+                            <div class="bg-main w-9 h-9 border-2 solid border-white -translate-x-2 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
+                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4.5 h-4.5">
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+
+            </div>
+        </ng-template>
+    </p-menubar>
+</header>

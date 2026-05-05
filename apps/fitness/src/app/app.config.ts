@@ -2,7 +2,12 @@ import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter, withHashLocation, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import {
+  provideRouter,
+  withHashLocation,
+  withInMemoryScrolling,
+  withViewTransitions,
+} from '@angular/router';
 import { appRoutes } from './app.routes';
 import {
   provideClientHydration,
@@ -16,16 +21,20 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
-    provideRouter(appRoutes, withInMemoryScrolling({ scrollPositionRestoration: "top" }), withViewTransitions()),
+    provideRouter(
+      appRoutes,
+      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
+      withViewTransitions(),
+    ),
     provideHttpClient(withFetch()),
     providePrimeNG({
       theme: {
         preset: Aura,
         options: {
-          darkModeSelector: '.dark', 
-        }
-      }
+          darkModeSelector: '.dark',
+        },
+      },
+      ripple: true,
     }),
-
   ],
 };
