@@ -1,0 +1,18 @@
+<div class="relative">
+    <h1 class="text-[64px] font-bold uppercase text-gray-100 dark:text-gray-900 font-Baloo-Thambi-2 
+             [-webkit-text-stroke:2px_transparent]
+             bg-[linear-gradient(177.84deg,rgba(36,36,36,0.5)_-10.01%,rgba(255,255,255,0.5)_74.97%)]
+             dark:bg-[linear-gradient(177.84deg, rgba(255, 255, 255, 0.5)_-10.01%, rgba(35, 36, 37, 0.5)_70.99%)]
+             bg-clip-text
+             bg-origin-border"
+        [class.text-center]="centerAlignment() === true">
+
+        {{sectionTitle()}}
+    </h1>
+    <div class="flex items-center gap-4 absolute bottom-4" 
+        [class.left-1/2]="centerAlignment() === true"
+        [class.-translate-x-1/2]="centerAlignment() === true">
+        <img src="/icons/dumble.png" alt="dumble">
+        <h2 class="capitalize text-sm font-semibold text-main font-inter">{{sectionName()}}</h2>
+    </div>
+</div>
