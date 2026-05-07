@@ -1,0 +1,19 @@
+.title-background::before{
+    content: "About Us";
+    display: none;
+}
+:host-context(.dark) .title-background::before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: var(--color-gray-900);
+    font-size: 4rem;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    -webkit-text-stroke: 2px transparent;
+    background-image: linear-gradient(177.84deg,rgba(36,36,36,0.5) -10.01%,rgba(255,255,255,0.5) 74.97%);
+    background-clip: text;
+    background-origin: border-box;
+}

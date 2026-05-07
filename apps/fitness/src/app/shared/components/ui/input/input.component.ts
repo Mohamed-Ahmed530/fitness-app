@@ -1,32 +1,31 @@
-import { Component, forwardRef, input, Optional, Self, signal } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { Component, input, Optional, Self, signal } from '@angular/core';
+import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 @Component({
-  selector: 'app-input-field',
-  imports: [ReactiveFormsModule,IconFieldModule, InputIconModule, InputTextModule],
-  templateUrl: './input-field.component.html',
-  styleUrl: './input-field.component.scss',
- 
+  selector: 'app-input',
+  imports: [ReactiveFormsModule, IconFieldModule, InputIconModule, InputTextModule, NgClass],
+  templateUrl: './input.component.html',
+  styleUrl: './input.component.scss',
 })
-export class InputFieldComponent implements ControlValueAccessor {
+export class InputComponent implements ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl: NgControl) {
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
-
-  placeholder = input<string>('');
+  
   type = input<string>('text');
   id = input<string>('');
+  placeholder = input<string>('');
   disabledFlag = input<boolean>(false);
-  value = signal<any>('');
   disabled = signal<boolean>(false);
- 
+  value = signal<any>('');
 
-  onChange: (value: any) => void = () => { };
-  onTouched: () => void = () => { };
+  onChange: (value: any) => void = () => {};
+  onTouched: () => void = () => {};
 
   handleInput(event: Event): void {
     const val = (event.target as HTMLInputElement).value;

@@ -16,13 +16,16 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
-    provideRouter(appRoutes, withInMemoryScrolling({scrollPositionRestoration: "top"}), withViewTransitions()),
+    provideRouter(appRoutes, withInMemoryScrolling({ scrollPositionRestoration: "top" }), withViewTransitions()),
     provideHttpClient(withFetch()),
     providePrimeNG({
-        theme: {
-            preset: Aura
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark', 
         }
-    })
+      }
+    }),
 
   ],
 };
