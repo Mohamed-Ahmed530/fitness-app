@@ -1,9 +1,9 @@
-import { Component, computed, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '@fitness/auth-data-access';
-import { isPlatformBrowser } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -14,7 +14,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class NavigationBarComponent implements OnInit {
     
     private readonly authService = inject(AuthService);
-    private  platformId = inject(PLATFORM_ID);
+    private readonly cookieService = inject(CookieService);
 
     items: MenuItem[] | undefined;
     private initMenuItems(): void {
@@ -42,10 +42,8 @@ export class NavigationBarComponent implements OnInit {
     }
 
     checkAuthStatus() {
-        if(isPlatformBrowser(this.platformId)){
-            if(localStorage.getItem('fitness-access-token')) {
-                this.authService.isLoggedIn.set(true);
-            }
+        if(this.cookieService.get('fitness-access-token')) {
+            this.authService.isLoggedIn.set(true);
         }
     }
 
