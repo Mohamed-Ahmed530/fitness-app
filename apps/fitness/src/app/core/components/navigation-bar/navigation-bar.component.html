@@ -21,22 +21,10 @@
                     </button>
                 }@else {
                     <div class="flex">
-                        <div class="flex justify-center items-center group">
-                            <a routerLink="/auth/login" class="text-16px text-white bg-main hover:bg-main-hover font-Baloo-Thambi-2 font-bold uppercase cursor-pointer py-2 px-4 rounded-[20px] transition-all duration-200">login</a>
-                            <div class="bg-main w-9 h-9 border-2 solid border-white -translate-x-2 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
-                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4.5 h-4.5">
-                            </div>
-                        </div>
-                        <div class="flex justify-center items-center group">
-                            <a routerLink="/auth/register" class="text-16px text-main hover:text-main-hover font-Baloo-Thambi-2 font-bold uppercase cursor-pointer py-2 px-4 border border-solid border-main hover:border-main-hover rounded-[20px] transition-all duration-200">sign up</a>
-                            <div class="bg-main w-9 h-9 border-2 solid border-white -translate-x-2 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
-                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4.5 h-4.5">
-                            </div>
-                        </div>
+                        <app-action-button [text]="'Login'" [variant]="'filled'" [routerLink]="'/auth/login'"></app-action-button>
+                        <app-action-button [text]="'Sign up'" [variant]="'outline'" [routerLink]="'/auth/register'"></app-action-button>
                     </div>
                 }
-                
-
             </div>
         </ng-template>
     </p-menubar>
