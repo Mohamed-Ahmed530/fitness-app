@@ -1,3 +1,4 @@
+import { BASE_URL } from '@fitness/auth-data-access';
 import {
   ApplicationConfig,
   provideBrowserGlobalErrorListeners,
@@ -16,6 +17,7 @@ import {
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { environment } from './core/environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,6 +29,10 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
     ),
     provideHttpClient(withFetch()),
+    {
+      provide: BASE_URL,
+      useValue: environment.baseUrl
+    },
     providePrimeNG({
       theme: {
         preset: Aura,

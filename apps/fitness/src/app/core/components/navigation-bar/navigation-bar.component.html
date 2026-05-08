@@ -14,11 +14,10 @@
 
         <ng-template #end>
             <div class="flex items-center gap-2">
-
-                @if (isLoggedIn()) {
-                    <button class="w-[47px] h-[47px] bg-main rounded-full cursor-pointer">
+                @if (loggedIn()) {
+                    <a class="w-[47px] h-[47px] flex justify-center items-center bg-main rounded-full cursor-pointer">
                         <i class="pi pi-user"></i>
-                    </button>
+                    </a>
                 }@else {
                     <div class="flex">
                         <a routerLink="/auth/login" class="flex justify-center items-center group cursor-pointer no-underline">
@@ -35,8 +34,6 @@
                         </a>
                     </div>
                 }
-                
-
             </div>
         </ng-template>
     </p-menubar>

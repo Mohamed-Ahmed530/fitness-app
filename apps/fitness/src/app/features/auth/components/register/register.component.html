@@ -1,18 +1,25 @@
-<!-- <p>register works!</p> -->
+<section>
 
-<!--! test reusable component only -->
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+        <app-auth-header [title]="'create an account'" [subtitle]="'Hey There'"></app-auth-header>
+        <app-auth-card>
+            <div class="flex flex-col justify-center items-center gap-2">
+                <div class="firstName">
+                    <app-label [for]="'firstName'" [styleClass]="'sr-only'">First Name</app-label>
+                    <app-input  [id]="'firstName'" [type]="'text'" [placeholder]="'First Name'" [disabledFlag]="false" ></app-input>
+                    <!-- <app-error-message [nameControl]=""></app-error-message> -->
+                </div>
+                <div class="lastName">
+                    <app-label [for]="'lastName'" [styleClass]="'sr-only'">Last Name</app-label>
+                    <app-input [id]="'lastName'" [type]="'text'" [placeholder]="'Last Name'" [disabledFlag]="false" ></app-input>
+                </div>
+                <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
+            </div>
+            <app-button [label]="'register'" [loading]="false" [disabled]="false"  [styleClass]="'text-black'" [type]="'submit'"></app-button>
+        </app-auth-card>
 
-<app-auth-header [title]="'create an account'" [subtitle]="'Hey There'"></app-auth-header>
 
-<app-auth-card>
 
-    <div class="flex flex-col justify-center items-center gap-2">
-        
-        <app-label [for]="'test'" [styleClass]="'sr-only'">Email</app-label>
-        <app-input [id]="'test'" [type]="'text'" [placeholder]="'name'" [disabledFlag]="false" ></app-input>
-        <!-- <app-error-message [nameControl]=""></app-error-message> -->
-        <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
-        <app-button [label]="'register'" [loading]="false" [disabled]="false"  [styleClass]="'!text-black'" [type]="'submit'"></app-button>
-    </div>
+    </form>
 
-</app-auth-card>
+</section>
