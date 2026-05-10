@@ -1,0 +1,8 @@
+:host ::ng-deep {
+    .p-menubar {
+        @apply bg-transparent border-none;
+        .p-menubar-root-list {
+            @apply flex-1 justify-center; 
+        }
+    }
+}
