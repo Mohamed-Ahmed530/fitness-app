@@ -20,18 +20,8 @@
                     </a>
                 }@else {
                     <div class="flex">
-                        <a routerLink="/auth/login" class="flex justify-center items-center group cursor-pointer no-underline">
-                            <span class="text-16px text-white bg-main hover:bg-main-hover font-Baloo-Thambi-2 font-bold uppercase py-2 px-4 rounded-[20px] transition-all duration-200">login</span>
-                            <div class="bg-main w-9 h-9 border solid border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
-                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4">
-                            </div>
-                        </a>
-                        <a routerLink="/auth/register" class="flex justify-center items-center group cursor-pointer no-underline">
-                            <span class="text-16px text-main hover:text-white hover:bg-main-hover font-Baloo-Thambi-2 font-bold uppercase py-2 px-4 border border-solid border-main hover:border-main-hover rounded-[20px] transition-all duration-200">sign up</span>
-                            <div class="bg-main w-9 h-9 border solid border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform duration-200">
-                                <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4">
-                            </div>
-                        </a>
+                        <app-action-button [text]="'Login'" [variant]="'filled'" [routerLink]="'/auth/login'"></app-action-button>
+                        <app-action-button [text]="'Sign up'" [variant]="'outline'" [routerLink]="'/auth/register'"></app-action-button>
                     </div>
                 }
             </div>

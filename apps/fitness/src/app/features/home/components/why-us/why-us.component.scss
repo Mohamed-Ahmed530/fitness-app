@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.text-main {
+  color: var(--color-main);
+}
+
+.bg-main {
+  background-color: var(--color-main);
+}
+
+// Custom animations or transitions if needed
+img {
+  filter: grayscale(20%);
+  &:hover {
+    filter: grayscale(0%);
+  }
+}
