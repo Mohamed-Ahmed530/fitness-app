@@ -1,11 +1,11 @@
-<header class="w-[90%] mx-auto">
+<header class="py-10">
     <p-menubar [model]="items">
         <ng-template #start>
             <img src="/icons/logo.png" alt="Fitness Logo" class="w-[87px]" />
         </ng-template>
 
         <ng-template #item let-item>
-            <a [routerLink]="item.routerLink" routerLinkActive="text-main" pRipple class="flex justify-center items-center px-4 py-3 cursor-pointer gap-2 text-black no-underline transition-colors duration-300 hover:text-main">
+            <a [routerLink]="item.routerLink" routerLinkActive="text-main" pRipple class="flex justify-center items-center px-4 py-3 cursor-pointer gap-2 no-underline transition-colors duration-300 hover:text-main">
                 <span class="font-Baloo-Thambi-2 font-bold text-xl">
                     {{ item.label }}
                 </span>
@@ -14,11 +14,10 @@
 
         <ng-template #end>
             <div class="flex items-center gap-2">
-
-                @if (isLoggedIn()) {
-                    <button class="w-[47px] h-[47px] bg-main rounded-full cursor-pointer">
+                @if (loggedIn()) {
+                    <a class="w-[47px] h-[47px] flex justify-center items-center bg-main rounded-full cursor-pointer">
                         <i class="pi pi-user"></i>
-                    </button>
+                    </a>
                 }@else {
                     <div class="flex">
                         <app-action-button [text]="'Login'" [variant]="'filled'" [routerLink]="'/auth/login'"></app-action-button>

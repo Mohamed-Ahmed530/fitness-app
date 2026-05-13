@@ -1,8 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ActionButtonComponent } from "../../../shared/components/ui/action-button/action-button.component";
+import { AuthService } from '@fitness/auth-data-access';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -11,14 +13,11 @@ import { ActionButtonComponent } from "../../../shared/components/ui/action-butt
   styleUrl: './navigation-bar.component.scss',
 })
 export class NavigationBarComponent implements OnInit {
+    
+    private readonly authService = inject(AuthService);
+    private readonly cookieService = inject(CookieService);
+
     items: MenuItem[] | undefined;
-
-    isLoggedIn = signal(false);
-
-    ngOnInit(): void {
-        this.initMenuItems();
-    }
-
     private initMenuItems(): void {
         this.items = [
             {
@@ -35,4 +34,19 @@ export class NavigationBarComponent implements OnInit {
             },
         ];
     }
+
+    loggedIn = computed(() => this.authService.isLoggedIn())
+
+    ngOnInit(): void {
+        this.initMenuItems();
+        this.checkAuthStatus();
+    }
+
+    checkAuthStatus() {
+        if(this.cookieService.get('fitness-access-token')) {
+            this.authService.isLoggedIn.set(true);
+        }
+    }
+
+
 }
