@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, HostListener, inject, OnInit, signal } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -16,6 +16,8 @@ export class NavigationBarComponent implements OnInit {
     
     private readonly authService = inject(AuthService);
     private readonly cookieService = inject(CookieService);
+
+    isScroll = signal<boolean>(false);
 
     items: MenuItem[] | undefined;
     private initMenuItems(): void {
@@ -45,6 +47,14 @@ export class NavigationBarComponent implements OnInit {
     checkAuthStatus() {
         if(this.cookieService.get('fitness-access-token')) {
             this.authService.isLoggedIn.set(true);
+        }
+    }
+
+    @HostListener('window:scroll') onscroll() {
+        if (window.scrollY > 0) {
+        this.isScroll.set(true);
+        } else {
+        this.isScroll.set(true);
         }
     }
 
