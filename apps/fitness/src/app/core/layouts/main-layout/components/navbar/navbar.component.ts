@@ -1,21 +1,23 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, OnInit, computed, HostListener, inject, signal } from '@angular/core';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { ActionButtonComponent } from "../../../shared/components/ui/action-button/action-button.component";
 import { AuthService } from '@fitness/auth-data-access';
 import { CookieService } from 'ngx-cookie-service';
+import { ActionButtonComponent } from "../../../../../shared/components/ui/action-button/action-button.component";
 
 @Component({
-  selector: 'app-navigation-bar',
+  selector: 'app-navbar',
   imports: [MenubarModule, RouterLink, RouterLinkActive, ActionButtonComponent],
-  templateUrl: './navigation-bar.component.html',
-  styleUrl: './navigation-bar.component.scss',
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.scss',
 })
-export class NavigationBarComponent implements OnInit {
-    
+export class NavbarComponent implements OnInit {
+
     private readonly authService = inject(AuthService);
     private readonly cookieService = inject(CookieService);
+
+    isScroll = signal<boolean>(false);
 
     items: MenuItem[] | undefined;
     private initMenuItems(): void {
@@ -48,5 +50,8 @@ export class NavigationBarComponent implements OnInit {
         }
     }
 
+    @HostListener('window:scroll') onscroll() {
+        this.isScroll.set(window.scrollY > 0);
+    }
 
 }

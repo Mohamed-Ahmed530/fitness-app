@@ -1,5 +1,5 @@
 <section class="relative">
-    <div class="lg:flex justify-center items-center">
+    <div class="lg:flex justify-center items-center pt-28">
         <div class="w-full lg:w-3/5 flex flex-col justify-center py-2 gap-4 lg:gap-16">
             <h1 class="font-Baloo-Thambi-2 text-2xl lg:text-6xl text-black dark:text-white font-bold uppercase leading-tight">
                 <span class="block lg:inline">Your body can </span>
@@ -29,31 +29,8 @@
             </div>
     
             <div class="flex justify-center lg:justify-start items-center gap-8">
-                <a class="flex justify-center items-center group cursor-pointer">
-                    <button
-                    class="bg-main w-[133px] h-[50px] lg:w-[151px] lg:h-[50px] cursor-pointer text-sm lg:text-16px text-white rounded-[100px] font-Rubik font-semibold uppercase transition-all duration-200 hover:bg-main-hover"
-                    >
-                    Get Started
-                    </button>
-                    <div
-                    class="bg-main w-9 h-9 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
-                    >
-                    <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4" />
-                    </div>
-                </a>
-        
-                <a class="flex justify-center items-center group cursor-pointer">
-                    <button
-                    class="border w-[133px] h-[50px] lg:w-[163px] lg:h-[50px] cursor-pointer text-sm lg:text-16px border-main text-main rounded-[100px] font-Rubik font-semibold uppercase transition-all duration-200 hover:bg-main hover:text-white"
-                    >
-                    Explore More
-                    </button>
-                    <div
-                    class="bg-main w-9 h-9 border-2 border-white -translate-x-3 rounded-full flex justify-center items-center group-hover:rotate-45 transition-transform"
-                    >
-                    <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4 h-4" />
-                    </div>
-                </a>
+                <app-action-button [text]="'Get Started'" [variant]="'filled'"></app-action-button>
+                <app-action-button [text]="'Explore More'" [variant]="'outline'"></app-action-button>
             </div>
         </div>
         

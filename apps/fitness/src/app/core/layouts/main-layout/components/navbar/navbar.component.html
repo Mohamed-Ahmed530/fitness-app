@@ -1,5 +1,5 @@
-<header class="py-10">
-    <p-menubar [model]="items">
+<nav [class.shadow-xl]="isScroll()" [class.backdrop-blur-lg]="isScroll()" [class.py-4]="isScroll()" [class.py-2]="!isScroll()" class="fixed top-0 left-0 right-0 z-20 bg-transparent bg-[#FFFFFF99] dark:bg-[#24242499] transition-all duration-500">
+    <p-menubar class="w-[90%]  mx-auto" [model]="items">
         <ng-template #start>
             <img src="/icons/logo.png" alt="Fitness Logo" class="w-[87px]" />
         </ng-template>
@@ -27,4 +27,4 @@
             </div>
         </ng-template>
     </p-menubar>
-</header>
+</nav>
