@@ -1,0 +1,30 @@
+<nav [class.shadow-xl]="isScroll()" [class.backdrop-blur-lg]="isScroll()" [class.py-4]="isScroll()" [class.py-2]="!isScroll()" class="fixed top-0 left-0 right-0 z-20 bg-transparent bg-[#FFFFFF99] dark:bg-[#24242499] transition-all duration-500">
+    <p-menubar class="w-[90%]  mx-auto" [model]="items">
+        <ng-template #start>
+            <img src="/icons/logo.png" alt="Fitness Logo" class="w-[87px]" />
+        </ng-template>
+
+        <ng-template #item let-item>
+            <a [routerLink]="item.routerLink" routerLinkActive="text-main" pRipple class="flex justify-center items-center px-4 py-3 cursor-pointer gap-2 no-underline transition-colors duration-300 hover:text-main">
+                <span class="font-Baloo-Thambi-2 font-bold text-xl">
+                    {{ item.label }}
+                </span>
+            </a>
+        </ng-template>
+
+        <ng-template #end>
+            <div class="flex items-center gap-2">
+                @if (loggedIn()) {
+                    <a class="w-[47px] h-[47px] flex justify-center items-center bg-main rounded-full cursor-pointer">
+                        <i class="pi pi-user"></i>
+                    </a>
+                }@else {
+                    <div class="flex">
+                        <app-action-button [text]="'Login'" [variant]="'filled'" [routerLink]="'/auth/login'"></app-action-button>
+                        <app-action-button [text]="'Sign up'" [variant]="'outline'" [routerLink]="'/auth/register'"></app-action-button>
+                    </div>
+                }
+            </div>
+        </ng-template>
+    </p-menubar>
+</nav>

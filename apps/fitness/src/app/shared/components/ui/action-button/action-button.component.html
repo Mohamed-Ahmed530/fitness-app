@@ -1,0 +1,19 @@
+<div class="flex justify-center items-center group cursor-pointer">
+    <a
+        [routerLink]="routerLink()"
+        class="text-16px font-Baloo-Thambi-2 font-bold capitalize py-2.5 px-5 rounded-[20px] transition-all duration-200"
+        [class]="
+        variant() === 'filled'
+            ? 'text-white bg-main hover:bg-main-hover'
+            : 'text-main border border-solid border-main hover:bg-main-hover hover:text-white'
+        "
+    >
+        {{ text() }}
+    </a>
+
+    <div
+        class="bg-main w-9 h-9 border-2 border-white -translate-x-2 rounded-full hidden md:flex justify-center items-center group-hover:rotate-45 transition-transform duration-200"
+    >
+        <img src="/icons/whiteArrow.png" alt="Arrow" class="w-4.5 h-4.5" />
+    </div>
+</div>

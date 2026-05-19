@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { SectionNameComponent } from "apps/fitness/src/app/shared/ui/section-name/sectionName.component";
+import { SectionNameComponent } from "../../../../shared/ui/section-name/sectionName.component";
+import { ActionButtonComponent } from "../../../../shared/components/ui/action-button/action-button.component";
 
 @Component({
   selector: 'app-about',
-  imports: [SectionNameComponent],
+  imports: [SectionNameComponent, ActionButtonComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
