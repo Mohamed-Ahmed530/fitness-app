@@ -9,7 +9,7 @@
     <div class="flex flex-col justify-center items-center gap-2">
         
         <app-label [for]="'test'" [styleClass]="'sr-only'">Email</app-label>
-        <app-input [id]="'test'" [type]="'text'" [placeholder]="'name'" [disabledFlag]="false" ></app-input>
+        <app-input [id]="'test'" [type]="'text'" icontype="text" [placeholder]="'name'" [disabledFlag]="false" ></app-input>
         <!-- <app-error-message [nameControl]=""></app-error-message> -->
         <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
         <app-button [label]="'register'" [loading]="false" [disabled]="false"  [styleClass]="'!text-black'" [type]="'submit'"></app-button>

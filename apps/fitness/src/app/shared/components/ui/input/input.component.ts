@@ -19,6 +19,7 @@ export class InputComponent implements ControlValueAccessor {
 
   placeholder = input<string>('');
   type = input<string>('text');
+  icontype = input.required<'text'|'email'|'password'>(); // to set icon based on type because type() is change after toggle password visibility 
   id = input<string>('');
   disabledFlag = input<boolean>(false);
   value = signal<any>('');

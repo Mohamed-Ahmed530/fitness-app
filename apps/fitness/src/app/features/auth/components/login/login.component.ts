@@ -3,10 +3,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from 'apps/fitness/src/app/shared/components/ui/input/input.component';
 import { Subject } from 'rxjs';
+import { AuthHeaderComponent } from "apps/fitness/src/app/shared/components/ui/auth-header/auth-header.component";
+import { SocialAuthComponent } from "apps/fitness/src/app/shared/components/ui/social-auth/social-auth.component";
+import { ButtonComponent } from "apps/fitness/src/app/shared/components/ui/button/button.component";
+import { ErrorMessageComponent } from "apps/fitness/src/app/shared/components/ui/error-message/error-message.component";
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink,InputComponent],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -18,6 +22,20 @@ export class LoginComponent {
   private destroy$ = new Subject<void>();
 
   togglePassword: WritableSignal<boolean> = signal(false);
+  loading: WritableSignal<boolean> = signal(false);
+
+  loginViaSocial(provider: string) {
+    const socialUrls: Record<string, string> = {
+      google: 'https://www.google.com',
+      facebook: 'https://www.facebook.com',
+      apple: 'https://www.apple.com',
+    };
+
+    const url = socialUrls[provider];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,8 +49,32 @@ export class LoginComponent {
   }
 
   submitForm():void{
-    if(this.loginForm.valid){
-      console.log(this.loginForm.value);
+    if (this.loginForm.valid) {
+      // this.errorMsg.set("");
+      if (!this.loading()) {
+        this.loading.set(true);
+        // this._authService.login(this.loginForm.value)
+        // .pipe(takeUntil(this.destroy$), finalize(()=> this.loading.set(false))).subscribe({
+        //   next:(res)=>{
+        //     if (res.message === "success") {
+        //       timer(1000).pipe(takeUntil(this.destroy$)).subscribe(()=>{
+        //          this._authService.saveToken(res.token);
+        //         this._router.navigate(['/home']);
+        //       })
+        //       this.success.set(res.message);
+        //     }
+        //   },
+        //   error:(err: HttpErrorResponse)=>{
+        //     if (err.error.error) {
+        //       this.errorMsg.set(err.error.error);
+        //     }
+        //   }
+        // })
+         this._router.navigate(['/home']);
+      }
+
+    }else{
+      this.loginForm.markAllAsTouched();
     }
   }
 
@@ -40,4 +82,6 @@ export class LoginComponent {
   togglePasswordVisibility(): void {
     this.togglePassword.update(prev => !prev);
   }
+
+  
 }
