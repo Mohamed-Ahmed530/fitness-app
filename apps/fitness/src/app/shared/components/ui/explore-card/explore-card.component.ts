@@ -1,6 +1,12 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+export interface IExploreCard {
+  title: string;
+  image: string;
+  link?: string;
+}
+
 @Component({
   selector: 'app-explore-card',
   imports: [RouterLink],
@@ -8,7 +14,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './explore-card.component.scss',
 })
 export class ExploreCardComponent {
-  title = input.required<string>();
-  image = input.required<string>();
-  link = input<string>('');
+  data = input.required<IExploreCard>();
 }
+
