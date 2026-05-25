@@ -15,11 +15,12 @@ import {
   provideClientHydration,
   withEventReplay,
 } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { environment } from './core/environments/environment';
 import {CookieService} from 'ngx-cookie-service';
+import { headerInterceptor } from './core/interceptors/header/header-interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -31,7 +32,7 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withViewTransitions(),
     ),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(),withInterceptors([headerInterceptor])),
     importProvidersFrom(CookieService),
     {
       provide: BASE_URL,
