@@ -1,14 +1,14 @@
-import { NgClass } from '@angular/common';
-import { Component, input, Optional, Self, signal } from '@angular/core';
-import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { Component, forwardRef, input, Optional, Self, signal } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule, IconFieldModule, InputIconModule, InputTextModule, NgClass],
+  imports: [ReactiveFormsModule,IconFieldModule, InputIconModule, InputTextModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
+ 
 })
 export class InputComponent implements ControlValueAccessor {
   constructor(@Optional() @Self() public ngControl: NgControl) {
@@ -16,16 +16,18 @@ export class InputComponent implements ControlValueAccessor {
       this.ngControl.valueAccessor = this;
     }
   }
-  
-  type = input<string>('text');
-  id = input<string>('');
-  placeholder = input<string>('');
-  disabledFlag = input<boolean>(false);
-  disabled = signal<boolean>(false);
-  value = signal<any>('');
 
-  onChange: (value: any) => void = () => {};
-  onTouched: () => void = () => {};
+  placeholder = input<string>('');
+  type = input<string>('text');
+  icontype = input.required<'text'|'email'|'password'>(); // to set icon based on type because type() is change after toggle password visibility 
+  id = input<string>('');
+  disabledFlag = input<boolean>(false);
+  value = signal<any>('');
+  disabled = signal<boolean>(false);
+ 
+
+  onChange: (value: any) => void = () => { };
+  onTouched: () => void = () => { };
 
   handleInput(event: Event): void {
     const val = (event.target as HTMLInputElement).value;

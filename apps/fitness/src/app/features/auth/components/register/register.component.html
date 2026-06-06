@@ -6,12 +6,12 @@
             <div class="flex flex-col justify-center items-center gap-2">
                 <div class="firstName">
                     <app-label [for]="'firstName'" [styleClass]="'sr-only'">First Name</app-label>
-                    <app-input  [id]="'firstName'" [type]="'text'" [placeholder]="'First Name'" [disabledFlag]="false" ></app-input>
+                    <app-input icontype='text'  [id]="'firstName'" [type]="'text'" [placeholder]="'First Name'" [disabledFlag]="false" ></app-input>
                     <!-- <app-error-message [nameControl]=""></app-error-message> -->
                 </div>
                 <div class="lastName">
                     <app-label [for]="'lastName'" [styleClass]="'sr-only'">Last Name</app-label>
-                    <app-input [id]="'lastName'" [type]="'text'" [placeholder]="'Last Name'" [disabledFlag]="false" ></app-input>
+                    <app-input icontype='text' [id]="'lastName'" [type]="'text'" [placeholder]="'Last Name'" [disabledFlag]="false" ></app-input>
                 </div>
                 <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
             </div>

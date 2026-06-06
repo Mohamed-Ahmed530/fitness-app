@@ -1,27 +1,24 @@
+ 
+
 <p-iconfield>
-    <p-inputicon
-        class="pi"
-        [ngClass]="{
-            'pi-envelope': type() === 'email',
-            'pi-user': type() === 'text',
-            'pi-lock': type() === 'password',
-        }"
-    />
-    <input
-        pInputText
-        [type]="type()"
-        [id]="id()"
-        [value]="value()"
-        [placeholder]="placeholder()"
-        [disabled]="disabled() || disabledFlag()"
-        (input)="handleInput($event)"
-        (blur)="onTouched()"
-        class="px-4 py-2 w-77.75! border rounded-[20px]! text-sm! focus:border-gray-200! placeholder:text-gray-200 placeholder:text-sm placeholder:font-Baloo-Thambi-2 font-Baloo-Thambi-2 focus:outline-none disabled:bg-gray-100"
-        [class.border-gray-200]="
-        ngControl?.control?.valid || !ngControl?.control?.touched
-        "
-        [class.border-[#F04438]!]="
-        ngControl?.control?.invalid && ngControl?.control?.touched
-        "
-    />
+  <p-inputicon class="pi dark:text-gray-200! text-gray-900!"
+  [class]="{
+  'pi-envelope' : icontype()=='email',
+  'pi-user' : icontype()=='text',
+  'pi-lock' : icontype()=='password'
+   } " />
+  <input
+  pInputText
+    [type]="type()"
+    [id]="id()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled() || disabledFlag()"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    class="px-4 py-2 w-77.75! bg-transparent! border rounded-[20px]! text-sm! dark:placeholder:text-gray-200! placeholder:text-gray-900! dark:text-gray-200 placeholder:text-sm placeholder:font-Baloo-Thambi-2 font-Baloo-Thambi-2 disabled:bg-gray-100"
+    [class.dark:border-gray-200!]="ngControl?.control?.valid || !ngControl?.control?.touched"
+    [class.border-gray-900!]="ngControl?.control?.valid || !ngControl?.control?.touched"
+    [class.border-[#F04438]!]="ngControl?.control?.invalid && ngControl?.control?.touched"
+  />
 </p-iconfield>

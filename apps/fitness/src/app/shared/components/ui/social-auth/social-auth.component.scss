@@ -1,5 +1,5 @@
 @reference "../../../../../styles.scss";
 
 .social-btn {
-    @apply w-[32px] h-[32px] flex justify-center items-center bg-black rounded-full text-white cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200;
+    @apply w-[32px] h-[32px] flex justify-center items-center bg-gray-300 dark:bg-gray-900 rounded-full text-gray-900 dark:text-white cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200;
 }

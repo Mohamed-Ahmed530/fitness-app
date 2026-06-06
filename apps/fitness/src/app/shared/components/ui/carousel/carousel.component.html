@@ -1,0 +1,17 @@
+<div>
+    <p-carousel [value]="groupedItems()" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions"
+        showNavigators="false">
+        <ng-template let-chunk #item>
+            <!-- Wrapper column for rows -->
+            <div class="flex flex-col gap-8.25">
+
+                <!-- Loop over individual rows inside this column chunk -->
+                @for (i of chunk; track $index) {
+                
+                <app-explore-card [data]="{ title: i.title, image: i.image, link: i.link }"></app-explore-card>
+                }
+
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
