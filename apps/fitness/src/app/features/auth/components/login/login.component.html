@@ -30,7 +30,10 @@
         </div>
         <a routerLink="/auth/forgot-password" class="font-Baloo-Thambi-2 font-bold text-main ms-auto underline">Forget Password ?</a>
         <app-social-auth (selectProvider)="loginViaSocial($event)" ></app-social-auth>
-        <app-button label="login" [loading]="loading()" [parentForm]="loginForm"  [styleClass]="'!text-black'" type='submit'></app-button>
+        <app-button label="login" [loading]="loading()" [parentForm]="loginForm"  [styleClass]="'!text-black'" type='submit' [disabled]="!loginForm.valid"></app-button>
+         
+            <p-toast />
+          
     </form>
         <a routerLink="/auth/register" class="font-Baloo-Thambi-2 text-gray-900 dark:text-white m-auto capitalize">Dont have an account yet ? <span class="font-bold text-main underline">Register</span></a>
 

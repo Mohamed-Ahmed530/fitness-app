@@ -15,7 +15,7 @@
         <ng-template #end>
             <div class="flex items-center gap-2">
                 @if (loggedIn()) {
-                    <a class="w-[47px] h-[47px] flex justify-center items-center bg-main rounded-full cursor-pointer">
+                    <a class="w-[47px] h-[47px] flex justify-center items-center bg-main rounded-full cursor-pointer" routerLink="/profile">
                         <i class="pi pi-user"></i>
                     </a>
                 }@else {
