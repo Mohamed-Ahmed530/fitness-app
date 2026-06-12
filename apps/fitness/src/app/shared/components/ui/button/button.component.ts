@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -17,4 +17,10 @@ export class ButtonComponent {
   icon = input<string>('');
   iconPos = input<'left' | 'right'>('left');
   type = input<'button' | 'submit' | 'reset'>('button');
+  alignment= input<'left' | 'center' | 'right'>('center');
+  click=output<void>();
+
+  onClick(){
+    this.click.emit();
+  }
 }

@@ -1,0 +1,22 @@
+<div>
+    <h2 class="capitalize font-extrabold text-[32px] ">{{cardTitle()}}</h2>
+    <a (click)="showDialog()" class="cursor-pointer underline uppercase  hover:text-main duration-300">tap to change</a>
+
+    <button
+        class="mt-4 w-full h-12 flex items-center justify-between gap-15 px-4 rounded-[20px] border dark:border-gray-200 border-gray-900 bg-main">
+        <span class="font-bold text-nowrap capitalize text-gray-900 dark:text-gray-300">{{userInfoResponse()}}</span>
+        <img [src]=" _themeService.theme()==='dark'?'/icons/arrowCircleWhite.png':'/icons/arrowCircleGray.png'"
+            class="w-4.5 h-5.25" alt="icon">
+    </button>
+</div>
+<p-dialog [showHeader]="false" [closable]="true" [(visible)]="visible" [modal]="true" [style]="{ width: '561px'}">
+    @if (cardTitle()=="your goal") {
+    <app-user-plan (saveAnswer)="updateAnswer($event)" question="what is your Goal ?"
+        [answers]="['gain weight','lose weight','get fitter','gain more flexible','learn the basic']"></app-user-plan>
+    }
+    @if (cardTitle()=="level") {
+    <app-user-plan (saveAnswer)="updateAnswer($event)" question="your regular physical activity level ?"
+        [answers]="['rookie','beginner','intermediate','advanced','true beast']"></app-user-plan>
+    }
+
+</p-dialog>

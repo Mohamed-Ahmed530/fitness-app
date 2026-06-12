@@ -38,10 +38,12 @@ export interface ChangePasswordRequest {
 
 
 export interface EditProfileRequest {
-  firstName: string;
-  lastName: string;
-  email: string;
-  age: number;
-  weight: number;
-  height: number;
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  age?: number;
+  weight?: number;
+  height?: number;
+  activityLevel?: string;
+  goal?: string;
 }
