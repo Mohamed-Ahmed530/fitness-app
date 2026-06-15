@@ -8,6 +8,7 @@ import { AuthService } from '@fitness/auth-data-access';
 import { Subject, takeUntil } from 'rxjs';
 import { ProfileModel } from 'libs/auth/data-access/src/lib/interfaces/profile.model';
 
+
 @Component({
   selector: 'app-user-profile',
   imports: [ProfileCardComponent, SettingsCardComponent, ToggleSwitchModule, FormsModule],

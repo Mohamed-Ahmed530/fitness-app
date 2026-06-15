@@ -6,10 +6,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { UserPlanComponent } from "../user-plan/userPlan.component";
 import { AuthService } from '@fitness/auth-data-access';
 import { Subject, takeUntil } from 'rxjs';
+import { WheelPickerComponent } from '../wheel-picker/wheelPicker.component';
 
 @Component({
   selector: 'app-profile-card',
-  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent],
+  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent, WheelPickerComponent],
   templateUrl: './profileCard.component.html',
   styleUrl: './profileCard.component.scss',
 })
@@ -29,10 +30,6 @@ export class ProfileCardComponent implements OnDestroy {
   }
 
   updateAnswer(answer: string) {
-    this.visible = false;  // to close the dialog
-
-    this.questionAnswered.emit(); // to notify parent component to refresh the data
-
     if (this.cardTitle() === 'your goal') {
       this._authService.editProfile({ goal: answer }).pipe(takeUntil(this.destroy$)).subscribe({
         next: (res) => {
@@ -61,6 +58,18 @@ export class ProfileCardComponent implements OnDestroy {
       });
 
     }
+    this.visible = false;  // to close the dialog
+
+    this.questionAnswered.emit(); // to notify parent component to refresh the data
+  }
+  userWeight: number = 70; 
+  userHeight: number = 165;
+  userAge: number = 25;
+
+  // اختياري: لو حابة تعملي وظيفة تطبعي فيها القيم لما تتغير
+  onWeightChange(weight: number) {
+    this.userWeight = weight;
+    console.log('الوزن الجديد في كارت الملف الشخصي:', this.userWeight);
   }
 
   ngOnDestroy() {

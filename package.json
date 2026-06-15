@@ -29,6 +29,7 @@
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/postcss": "^4.2.2",
     "express": "^4.21.2",
+    "keen-slider": "^6.8.6",
     "ngx-cookie-service": "^21.3.1",
     "postcss": "^8.5.9",
     "primeicons": "^7.0.0",

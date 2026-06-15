@@ -1,0 +1,27 @@
+<div class="text-gray-900 dark:text-white capitalize py-2 bg-gray-100 dark:bg-gray-900 rounded-xl">
+                    <h3 class="font-Baloo-Thambi-2 text-5xl font-extrabold ">what is your weight ?</h3>
+                <h4 class="text-2xl">this helps us create Your personalized plan</h4>
+               <div class="weight-picker-stage">
+  <!-- الخلفية المظلمة الشاملة للمنطقة -->
+  <div class="dark-background"></div>
+
+  <!-- حاوية العناصر الثابتة -->
+  <div class="fixed-indicators">
+    <div class="unit-label">{{ unit }}</div>
+    
+    <!-- المثلث البرتقالي الثابت في الأسفل -->
+    <div class="orange-pointer-wrapper">
+      <div class="orange-pointer"></div>
+    </div>
+  </div>
+
+  <!-- حاوية الـ Keen Slider للتمرير الأفقي -->
+  <div #sliderRef class="keen-slider-horizontal keen-slider">
+    @for (option of options; track option) {
+      <div class="keen-slider__slide wheel-slide-horizontal">
+        {{ option }}
+      </div>
+    }
+  </div>
+</div>
+                </div>

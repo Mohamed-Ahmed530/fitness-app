@@ -5,11 +5,11 @@
                     @for (answer of answers(); track $index) {
                            <div class="flex items-center gap-4 w-77.75 h-12 px-4 rounded-full border bg-[#D3D3D333]"
                             [class]="answer == checkedAnswer ?'text-main border-main':'border-gray-300 text-gray-900'">
-                        <label class="w-full text-start" [for]="'q'+$index">{{answer}}</label>
+                        <label class="w-full text-start dark:text-white" [for]="'q'+$index">{{answer}}</label>
                         <input [(ngModel)]="checkedAnswer" class=" accent-main" type="radio" [id]="'q'+$index" name="plan" [value]="answer">
                     </div>
                     }
                    
                 </div>
-                <app-button  label="save" alignment="center" (click)="onClick()"></app-button>    
+                <app-button [disabled]="checkedAnswer == ''" label="save" alignment="center" (click)="onClick()"></app-button>    
                 </div>

@@ -1,0 +1,109 @@
+/* حاوية المسرح الشاملة */
+.weight-picker-stage {
+  position: relative;
+  width: 100%;
+  height: 180px; /* الارتفاع الكلي لمنطقة التفاعل */
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* الخلفية المظلمة */
+.dark-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1e1e1e; /* لون رمادي داكن غامق مطابق */
+  z-index: 1;
+}
+
+/* حاوية العناصر الثابتة (كجم، المثلث) */
+.fixed-indicators {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  z-index: 10; /* فوق السلايدر */
+  pointer-events: none; /* عشان ما يمنعش سحب السلايدر */
+}
+
+/* تسمية الوحدة (كجم) */
+.unit-label {
+  font-size: 1.1rem;
+  color: #ff5e3a; /* لون برتقالي نيون مطابق للصورة */
+  font-weight: bold;
+}
+
+/* حاوية المثلث البرتقالي */
+.orange-pointer-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+/* المثلث البرتقالي */
+.orange-pointer {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid #ff5e3a; /* المثلث يشير لأعلى، لونه مطابق */
+}
+
+/* حاوية السلايدر الأفقي */
+.keen-slider-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); /* تمركز رأسي */
+  height: 80px; /* ارتفاع منطقة الأرقام */
+  width: 100%;
+  z-index: 5;
+  display: flex;
+}
+
+/* تأثير التدرج على الأطراف (تبهيت الأرقام البعيدة) */
+.keen-slider-horizontal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    #1e1e1e 0%, 
+    rgba(30, 30, 30, 0) 15%, 
+    rgba(30, 30, 30, 0) 85%, 
+    #1e1e1e 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ستايل كل رقم أفقي */
+.wheel-slide-horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem; /* حجم أساسي للأرقام البعيدة */
+  font-weight: 500;
+  color: #e0e0e0; /* لون رمادي فاتح مطابق */
+  transition: all 0.1s linear; /* تحويل سلس للغاية */
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* ستايل الرقم النشط المصبوغ بالبرتقالي (تطبقه دالة updateScale) */
+.wheel-slide-horizontal.active-orange {
+  color: #ff5e3a !important; /* لون برتقالي نيون */
+  font-weight: 800 !important; /* سميك جداً */
+  opacity: 1 !important; /* سطوع كامل */
+}

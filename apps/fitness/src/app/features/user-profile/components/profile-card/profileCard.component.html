@@ -18,5 +18,8 @@
     <app-user-plan (saveAnswer)="updateAnswer($event)" question="your regular physical activity level ?"
         [answers]="['rookie','beginner','intermediate','advanced','true beast']"></app-user-plan>
     }
-
+    @if (cardTitle()=="weight" && visible) {
+ <!-- <app-wheel-picker></app-wheel-picker> -->
+     
+    }
 </p-dialog>

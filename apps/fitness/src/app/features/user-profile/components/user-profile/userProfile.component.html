@@ -10,15 +10,15 @@
         </div>
         <div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center mb-10">
-                <app-settings-card icon="pi-sync">change password</app-settings-card>
-                <app-settings-card icon="pi-globe"><span>select language <br>( <span class="text-main">english</span>)</span></app-settings-card>
+                <app-settings-card settingsType="change password" icon="pi-sync">change password</app-settings-card>
+                <app-settings-card settingsType="select language" icon="pi-globe"><span>select language <br>( <span class="text-main">english</span>)</span></app-settings-card>
                 <app-settings-card [icon]="currentMode() === 'dark' ? 'pi-moon' : 'pi-sun'">
                     <div>mood ( <span class="text-main">{{currentMode()}}</span> ) <br>
                      <p-toggleswitch (onChange)="toggleTheme()" [(ngModel)]="checked" />
                     </div></app-settings-card>
               
             </div>
-            <app-settings-card icon="pi-sign-out"><span class="text-main">logout</span></app-settings-card>
+            <app-settings-card settingsType="logout" icon="pi-sign-out"><span class="text-main">logout</span></app-settings-card>
         </div>
     </div>
 
