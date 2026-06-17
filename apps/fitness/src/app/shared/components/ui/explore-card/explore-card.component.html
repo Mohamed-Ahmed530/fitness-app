@@ -8,7 +8,8 @@
             {{ data().title }}</h3>
 
         <a [routerLink]="data().link" class="flex items-center gap-2 w-fit group/btn cursor-pointer mt-1">
-            <span class="text-main font-Rubik font-normal text-sm">Explore</span>
+            <span class="text-main font-Rubik font-normal text-sm">{{ data().actionLabel || 'Explore' }}</span>
+
             <div
                 class="bg-main w-5 h-5 rounded-full flex justify-center items-center group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 group-hover/btn:rotate-45 transition-transform duration-200">
                 <img src="/icons/grayArrow.png" alt="Arrow" class="w-2.5 h-2.5" />

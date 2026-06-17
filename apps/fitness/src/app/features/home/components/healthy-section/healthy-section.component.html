@@ -1,0 +1,34 @@
+<section class="relative min-h-[850px] py-16 px-4 md:px-20 overflow-hidden flex flex-col items-center">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="/images/healthy-bg.jpg" alt="Healthy Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+
+    <!-- Blur Background behind cards -->
+    <div class="absolute w-full h-[450px] top-[15%] left-0 right-0 z-1 bg-black/20 backdrop-blur-lg"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center">
+        <div class="w-full h-fit flex justify-center items-center mb-6 text-center">
+            <app-section-name 
+                class="w-full block"
+                sectionName="Healthy Nutritions" 
+                sectionTitle="HEALTHY" 
+                [centerAlignment]="true">
+            </app-section-name>
+        </div>
+
+
+        <h3 class="text-center font-Baloo-Thambi-2 font-bold text-3xl md:text-5xl text-white mt-4 mb-16 max-w-3xl leading-tight">
+            FUEL YOUR FITNESS JOURNEY WITH CUSTOMIZED <span class="text-main">MEAL PLANS</span> FOR YOU
+        </h3>
+
+        <!-- Cards Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 relative z-20">
+            @for (meal of meals(); track meal.title) {
+                <app-explore-card [data]="meal"></app-explore-card>
+            }
+        </div>
+    </div>
+</section>
