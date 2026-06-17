@@ -14,19 +14,19 @@ export class HealthySectionComponent {
     {
       title: 'BREAKFAST',
       image: '/images/healthy-3.jpg',
-      link: '/meals/breakfast',
+      link: '/healthy',
       actionLabel: 'Read More'
     },
     {
       title: 'LUNCH',
       image: '/images/healthy-2.jpg',
-      link: '/meals/lunch',
+      link: '/healthy',
       actionLabel: 'Read More'
     },
     {
       title: 'DINNER',
       image: '/images/healthy-1.jpg',
-      link: '/meals/dinner',
+      link: '/healthy',
       actionLabel: 'Read More'
     }
   ]);
