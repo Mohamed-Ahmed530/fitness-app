@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CarouselComponent } from 'apps/fitness/src/app/shared/components/ui/carousel/carousel.component';
 import { SectionNameComponent } from "apps/fitness/src/app/shared/ui/section-name/sectionName.component";
 
@@ -10,7 +11,7 @@ export interface Workout {
 }
 @Component({
   selector: 'app-workouts',
-  imports: [SectionNameComponent,CarouselComponent],
+  imports: [SectionNameComponent,CarouselComponent,TranslatePipe],
   templateUrl: './workouts.component.html',
   styleUrl: './workouts.component.scss',
 })

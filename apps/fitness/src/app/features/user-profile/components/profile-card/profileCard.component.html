@@ -1,25 +1,48 @@
 <div>
-    <h2 class="capitalize font-extrabold text-[32px] ">{{cardTitle()}}</h2>
-    <a (click)="showDialog()" class="cursor-pointer underline uppercase  hover:text-main duration-300">tap to change</a>
+    <h2 class="capitalize font-extrabold text-[32px]">
+        {{ 'profile.cards.' + cardTitle() | translate }}
+    </h2>
+    
+    <a (click)="showDialog()" class="cursor-pointer underline uppercase hover:text-main duration-300">
+        {{ 'profile.settings.tapToChange' | translate }}
+    </a>
 
-    <button
-        class="mt-4 w-full h-12 flex items-center justify-between gap-15 px-4 rounded-[20px] border dark:border-gray-200 border-gray-900 bg-main">
-        <span class="font-bold text-nowrap capitalize text-gray-900 dark:text-gray-300">{{userInfoResponse()}}</span>
-        <img [src]=" _themeService.theme()==='dark'?'/icons/arrowCircleWhite.png':'/icons/arrowCircleGray.png'"
-            class="w-4.5 h-5.25" alt="icon">
+    <button class="mt-4 w-full h-12 flex items-center justify-between gap-15 px-4 rounded-[20px] border dark:border-gray-200 border-gray-900 bg-main">
+        <span class="font-bold text-nowrap capitalize text-gray-900 dark:text-gray-300">{{ userInfoResponse() }}</span>
+        <img [src]="_themeService.theme() === 'dark' ? '/icons/arrowCircleWhite.png' : '/icons/arrowCircleGray.png'" class="w-4.5 h-5.25" alt="icon">
     </button>
 </div>
+
 <p-dialog [showHeader]="false" [closable]="true" [(visible)]="visible" [modal]="true" [style]="{ width: '561px'}">
-    @if (cardTitle()=="your goal") {
-    <app-user-plan (saveAnswer)="updateAnswer($event)" question="what is your Goal ?"
-        [answers]="['gain weight','lose weight','get fitter','gain more flexible','learn the basic']"></app-user-plan>
+    
+    @if (cardTitle() == "your goal") {
+        <app-user-plan 
+            (saveAnswer)="updateAnswer($event)" 
+            [question]="'profile.questions.goalQuestion' | translate"
+            [answers]="[
+                'profile.answers.goals.gainWeight' | translate,
+                'profile.answers.goals.loseWeight' | translate,
+                'profile.answers.goals.getFitter' | translate,
+                'profile.answers.goals.flexible' | translate,
+                'profile.answers.goals.basics' | translate
+            ]">
+        </app-user-plan>
     }
-    @if (cardTitle()=="level") {
-    <app-user-plan (saveAnswer)="updateAnswer($event)" question="your regular physical activity level ?"
-        [answers]="['rookie','beginner','intermediate','advanced','true beast']"></app-user-plan>
-    }
-    @if (cardTitle()=="weight" && visible) {
- <!-- <app-wheel-picker></app-wheel-picker> -->
-     
-    }
+    
+   @if (cardTitle() == "level") {
+    <app-user-plan 
+        (saveAnswer)="updateAnswer($event)" 
+        [question]="'profile.questions.levelQuestion' | translate"
+        [answers]="[
+            'profile.answers.levels.rookie',
+            'profile.answers.levels.beginner',
+            'profile.answers.levels.intermediate',
+            'profile.answers.levels.advanced', 
+            'profile.answers.levels.beast'
+        ]">
+    </app-user-plan>
+}
+    
+    @if (cardTitle() == "weight" && visible) {
+        }
 </p-dialog>

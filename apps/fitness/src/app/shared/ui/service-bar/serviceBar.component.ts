@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-service-bar',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './serviceBar.component.html',
   styleUrl: './serviceBar.component.scss',
 })
 export class ServiceBarComponent {
-    items = [
-  'outdoor & online trainers',
-  'personal training',
-  'live classes',
-];
+items = [
+    'home.serviceBar.outdoorTrainers',
+    'home.serviceBar.personalTraining',
+    'home.serviceBar.liveClasses',
+  ];
 }

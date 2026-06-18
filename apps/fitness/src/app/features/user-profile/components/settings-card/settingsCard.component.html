@@ -10,24 +10,24 @@
    
         <div class="flex items-center gap-2">
             <i class="pi pi-info-circle text-5xl!"></i>
-            <p class="text-3xl font-Baloo-Thambi-2">Are you sure you want to logout?</p>
+            <p class="text-3xl font-Baloo-Thambi-2">{{ 'accountOptions.logoutConfirm' | translate }}</p>
         </div>
         <div class="flex justify-end gap-4 mt-4">
             <button
                 class="cursor-pointer px-4 py-2 rounded text-gray-100 bg-gray-900 dark:text-main dark:border dark:border-main"
-                (click)="visible=false">Cancel</button>
-            <button class="cursor-pointer px-4 py-2 rounded bg-main text-gray-900" (click)="logout()">Logout</button>
+                (click)="visible=false">{{ 'accountOptions.cancel' | translate }}</button>
+            <button class="cursor-pointer px-4 py-2 rounded bg-main text-gray-900" (click)="logout()">{{ 'accountOptions.logout' | translate }}</button>
         </div>
     }
     @if (settingsType()=='change password') {
-        <p class="text-3xl font-Baloo-Thambi-2 text-start">Change Password</p>
+        <p class="text-3xl font-Baloo-Thambi-2 text-start">{{ 'accountOptions.changePassword' | translate }}</p>
          <form class="flex flex-col justify-center items-center gap-2" [formGroup]="changePassForm" (ngSubmit)="submitForm()">
         <!-- password -->
         <div class="mt-2">
             @let passwordControl = changePassForm.get("password");
             <div class="relative">
                 <app-input icontype="password" formControlName="password" id='password' [type]="togglePassword() ? 'text' : 'password'"
-                placeholder="Password"></app-input>
+                [placeholder]="'accountOptions.passwordPlaceholder' | translate"></app-input>
             @if (togglePassword()) {
             <span (click)="togglePasswordVisibility()" class="absolute cursor-pointer top-1/2 -translate-y-1/2 right-3">
                 <i class="pi pi-eye text-gray-900! dark:text-gray-200!"></i> </span>
@@ -43,7 +43,7 @@
             @let newPasswordControl = changePassForm.get("newPassword");
             <div class="relative">
                 <app-input icontype="password" formControlName="newPassword" id='newPassword' [type]="togglePassword() ? 'text' : 'password'"
-                placeholder="New Password"></app-input>
+                [placeholder]="'accountOptions.newPasswordPlaceholder' | translate"></app-input>
             @if (togglePassword()) {
             <span (click)="togglePasswordVisibility()" class="absolute cursor-pointer top-1/2 -translate-y-1/2 right-3">
                 <i class="pi pi-eye text-gray-900! dark:text-gray-200!"></i> </span>
@@ -54,9 +54,24 @@
             </div>
             <app-error-message [nameControl]="newPasswordControl"></app-error-message>
         </div>
-         <app-button label="save" [loading]="loading()" [parentForm]="changePassForm"  [styleClass]="'!text-black'" type='submit' [disabled]="!changePassForm.valid"></app-button>
+         <app-button [label]="'accountOptions.save' | translate" [loading]="loading()" [parentForm]="changePassForm"  [styleClass]="'!text-black'" type='submit' [disabled]="!changePassForm.valid"></app-button>
            
            </form>
+    }
+    @if(settingsType()=='select language'){
+        <div class="flex flex-col gap-2 justify-center items-start px-2 ">
+        <p class="text-3xl font-Baloo-Thambi-2 text-start">{{ 'accountOptions.chooseLanguage' | translate }}</p>
+
+            <div class="flex gap-2 justify-center items-center text-2xl ">
+                <input [(ngModel)]="langCurrent" [checked]='langCurrent === "en"' (change)='changeLang()' value='en' class="accent-main" type="radio" name="lang" id="en">
+                <label for="en">{{ 'accountOptions.english' | translate }}</label>
+            </div>
+            <div class="flex gap-2 justify-center items-center text-2xl ">
+                <input [(ngModel)]="langCurrent" [checked]='langCurrent === "ar"' (change)='changeLang()' value='ar' class="accent-main" type="radio" name="lang" id="ar">
+                <label for="ar">{{ 'accountOptions.arabic' | translate }}</label>
+            </div>
+
+        </div>
     }
     </div>
 </p-dialog>

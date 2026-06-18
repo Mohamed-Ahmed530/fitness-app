@@ -7,10 +7,11 @@ import { UserPlanComponent } from "../user-plan/userPlan.component";
 import { AuthService } from '@fitness/auth-data-access';
 import { Subject, takeUntil } from 'rxjs';
 import { WheelPickerComponent } from '../wheel-picker/wheelPicker.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile-card',
-  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent, WheelPickerComponent],
+  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent,TranslatePipe, WheelPickerComponent],
   templateUrl: './profileCard.component.html',
   styleUrl: './profileCard.component.scss',
 })
@@ -45,7 +46,7 @@ export class ProfileCardComponent implements OnDestroy {
         'beginner': 'level2',
         'intermediate': 'level3',
         'advanced': 'level4',
-        'true beast': 'level5'
+        'beast': 'level5'
       };
 
       this._authService.editProfile({ activityLevel: activityMap[answer] }).pipe(takeUntil(this.destroy$)).subscribe({
@@ -66,10 +67,8 @@ export class ProfileCardComponent implements OnDestroy {
   userHeight: number = 165;
   userAge: number = 25;
 
-  // اختياري: لو حابة تعملي وظيفة تطبعي فيها القيم لما تتغير
   onWeightChange(weight: number) {
     this.userWeight = weight;
-    console.log('الوزن الجديد في كارت الملف الشخصي:', this.userWeight);
   }
 
   ngOnDestroy() {

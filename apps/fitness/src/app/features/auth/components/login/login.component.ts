@@ -13,11 +13,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule,TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [MessageService]

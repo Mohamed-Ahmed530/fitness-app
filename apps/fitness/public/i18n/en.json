@@ -1,0 +1,167 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "classes": "Classes",
+        "healthy": "Healthy"
+    },
+    "home": {
+        "heroSection": {
+            "yourbodycan": "Your body can",
+            "standAlmost": "Stand Almost",
+            "anything": "Anything",
+            "heroPragraph": "It's your mind that needs convincing. Push past your limits, stay committed, and watch as your body transform into powerhouse of strength and resilience. Start your journey today & truly capable of!",
+            "activeMembers": "Active Members",
+            "certifiedTrainers": "Certified Trainers",
+            "yearsOfExperience": "Years Of Experience",
+            "getStarted": "Get Started",
+            "exploreMore": "Explore More"
+        },
+        "serviceBar": {
+            "outdoorTrainers": "outdoor & online trainers",
+            "personalTraining": "personal training",
+            "liveClasses": "live classes'"
+        },
+        "aboutSection": {
+            "name": "About Us",
+            "title": "Workouts",
+            "headingPart1": "Empowering you to achieve ",
+            "headingPart2": "your fitness ",
+            "headingPart3": "goals",
+            "description": "We believe fitness is more than just a workout—it's a lifestyle. With top-of-the-line facilities, certified trainers, and a supportive community, we're here to inspire and guide you every step of the way.",
+            "goals": {
+                "personalTrainer": {
+                    "title": "Personal Trainer",
+                    "description": "Achieve your fitness goals with the guidance of our certified trainers."
+                },
+                "cardioPrograms": {
+                    "title": "Cardio Programs",
+                    "description": "From steady-state runs to interval sprints, our treadmill programs."
+                },
+                "qualityEquipment": {
+                    "title": "Quality Equipment",
+                    "description": "Our gym is equipped with the latest cardio & strength machines."
+                },
+                "healthyNutrition": {
+                    "title": "Healthy Nutritions",
+                    "description": "Fuel your fitness journey with customized meal plans for you."
+                }
+            }
+        },
+        "workoutsSection": {
+            "name": "Fitness Class",
+            "title": "Workouts",
+            "headingPart1": "Transform Your Body with Our",
+            "headingPart2": "Dynamic ",
+            "headingPart3": "Upcoming Workouts"
+        },
+        "whyUsSection": {
+            "subtitle": "Why Us",
+            "headingPart1": "Elevate Fitness",
+            "headingPart2": "With the",
+            "headingPart3": "Best Way",
+            "headingPart4": "Possible",
+            "description": "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods will guide you to success.",
+            "features": {
+                "feature1": {
+                    "title": "Tailored Training Plans",
+                    "description": "Comprehensive workout and nutrition programs customized to your fitness levels."
+                },
+                "feature2": {
+                    "title": "Professional Trainers",
+                    "description": "Certified and highly experienced coaches dedicated to safety and fast results."
+                },
+                "feature3": {
+                    "title": "Supportive Community",
+                    "description": "Train in a welcoming, high-energy environment filled with like-minded people."
+                }
+            }
+        }
+    },
+    "footer": {
+        "tagline": "Push harder, go Further. Your Fitness journey starts today!",
+        "contactUs": {
+            "title": "Contact Us"
+        },
+        "timing": {
+            "title": "Our Gym Timing",
+            "weekdays": {
+                "days": "Mon - Fri :",
+                "hours": "08:00 AM - 10:00 PM"
+            },
+            "weekend": {
+                "days": "Sat - Sun :",
+                "hours": "08:00 AM - 09:00 PM"
+            }
+        },
+        "location": {
+            "title": "Our Location",
+            "address": "2715 Ash Dr. San Jose, South Dakota 83475"
+        },
+        "rights": "Super Fitness. All rights reserved."
+    },
+    "profile": {
+        "cards": {
+            "your goal": "Your Goal",
+            "level": "Level",
+            "weight": "Weight"
+        },
+        "questions": {
+            "goalQuestion": "What is your Goal?",
+            "levelQuestion": "Your regular physical activity level?"
+        },
+        "answers": {
+            "goals": {
+                "gainWeight": "Gain weight",
+                "loseWeight": "Lose weight",
+                "getFitter": "Get fitter",
+                "flexible": "Gain more flexible",
+                "basics": "Learn the basic"
+            },
+            "levels": {
+                "rookie": "Rookie",
+                "beginner": "Beginner",
+                "intermediate": "Intermediate",
+                "advanced": "Advanced",
+                "beast": "True beast"
+            }
+        },
+        "settings": {
+            "changePassword": "Change Password",
+            "selectLanguage": "Select Language",
+            "currentLanguageName": "English",
+            "mode": "Mode",
+            "dark": "Dark",
+            "light": "Light",
+            "logout": "Logout",
+            "tapToChange": "Tap to change",
+            "personalizedPlanSubtitle":"this helps us create Your personalized plan",
+            "save":"save"
+        }
+    },
+    "auth": {
+        "login": {
+            "headerTitle": "Welcome back",
+            "headerSubtitle": "Hey There",
+            "title": "Login",
+            "emailPlaceholder": "Email",
+            "passwordPlaceholder": "Password",
+            "forgotPassword": "Forgot Password?",
+            "submitButton": "Login",
+            "noAccountText": "Don't have an account yet?",
+            "registerLink": "Register"
+        }
+    },
+    "accountOptions": {
+    "logoutConfirm": "Are you sure you want to logout?",
+    "cancel": "Cancel",
+    "logout": "Logout",
+    "changePassword": "Change Password",
+    "passwordPlaceholder": "Password",
+    "newPasswordPlaceholder": "New Password",
+    "save": "Save",
+    "chooseLanguage": "Choose Language",
+    "english": "English",
+    "arabic": "Arabic"
+  }
+}

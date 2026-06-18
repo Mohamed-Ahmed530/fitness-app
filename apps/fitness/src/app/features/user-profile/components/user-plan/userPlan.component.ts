@@ -1,24 +1,23 @@
-import { Component, input, output} from '@angular/core';
+import { Component, input, output, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { ButtonComponent } from "apps/fitness/src/app/shared/components/ui/button/button.component";
 
 @Component({
   selector: 'app-user-plan',
-  imports: [ButtonComponent,FormsModule],
+  imports: [ButtonComponent, FormsModule, TranslatePipe],
   templateUrl: './userPlan.component.html',
   styleUrl: './userPlan.component.scss',
 })
 export class UserPlanComponent {
   question = input.required<string>();
   answers = input.required<string[]>();
-  checkedAnswer: string = '';
-  saveAnswer=output<string>();
   
+  checkedAnswer: string = ''; 
+  saveAnswer = output<string>();
 
-  onClick(){
-    console.log('checkedAnswer:' ,this.checkedAnswer);
+  onClick() {
+    console.log('checkedAnswer to API:', this.checkedAnswer);
     this.saveAnswer.emit(this.checkedAnswer);
-    
   }
-
 }

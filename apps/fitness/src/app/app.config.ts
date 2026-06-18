@@ -3,6 +3,7 @@ import {
   ApplicationConfig,
   importProvidersFrom,
   provideBrowserGlobalErrorListeners,
+  inject
 } from '@angular/core';
 import {
   provideRouter,
@@ -21,7 +22,8 @@ import Aura from '@primeuix/themes/aura';
 import { environment } from './core/environments/environment';
 import {CookieService} from 'ngx-cookie-service';
 import { headerInterceptor } from './core/interceptors/header/header-interceptor';
-
+import {provideTranslateService, TranslateService} from "@ngx-translate/core";
+import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -46,6 +48,14 @@ export const appConfig: ApplicationConfig = {
         },
       },
       ripple: true,
+    }),
+      provideTranslateService({
+      lang: 'en',
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json'
+      })
     }),
 
   ],

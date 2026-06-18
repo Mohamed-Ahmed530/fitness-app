@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, input, OnDestroy, signal, WritableSignal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@fitness/auth-data-access';
 import { CookieService } from 'ngx-cookie-service';
@@ -11,12 +11,14 @@ import { ErrorMessageComponent } from "apps/fitness/src/app/shared/components/ui
 import { ButtonComponent } from "apps/fitness/src/app/shared/components/ui/button/button.component";
 import { ToastModule } from 'primeng/toast';
 import { InputComponent } from "apps/fitness/src/app/shared/components/ui/input/input.component";
+import { TranslationMyAppService } from 'apps/fitness/src/app/shared/services/TranslationMyApp/translation-my-app.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-settings-card',
-  imports: [DialogModule, ReactiveFormsModule, ErrorMessageComponent, ToastModule, InputComponent, ButtonComponent],
+  imports: [DialogModule, ReactiveFormsModule, ErrorMessageComponent, ToastModule, InputComponent, ButtonComponent,FormsModule,TranslatePipe],
   providers: [MessageService],
   templateUrl: './settingsCard.component.html',
   styleUrl: './settingsCard.component.scss',
@@ -25,7 +27,7 @@ export class SettingsCardComponent implements OnDestroy {
   readonly _authService = inject(AuthService);
   private readonly cookieService = inject(CookieService);
   private readonly messageService = inject(MessageService);
-  private _router = inject(Router);
+  private readonly _translationMyAppService = inject(TranslationMyAppService);
   private destroy$ = new Subject<void>();
   private readonly _formBuilder = inject(FormBuilder);
 
@@ -35,6 +37,7 @@ export class SettingsCardComponent implements OnDestroy {
   changePassForm!: FormGroup;
   loading: WritableSignal<boolean> = signal(false);
   togglePassword: WritableSignal<boolean> = signal(false);
+  langCurrent:'en'|'ar'='en';
 
 
 
@@ -44,6 +47,7 @@ export class SettingsCardComponent implements OnDestroy {
 
   ngOnInit(): void {
     this.initForm();
+    this.getLang();
   }
 
   initForm(): void {
@@ -51,6 +55,15 @@ export class SettingsCardComponent implements OnDestroy {
       password: [null, [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]],
       newPassword: [null, [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)]]
     })
+  }
+  getLang(): void {
+    const lang = localStorage.getItem('lang');
+    if (lang === 'en' || lang === 'ar') {
+      this.langCurrent = lang;
+    } else {
+      this.langCurrent = 'en';
+    }
+    
   }
 
   submitForm(): void {
@@ -104,6 +117,13 @@ export class SettingsCardComponent implements OnDestroy {
     });
 
     this.visible = false; // Close the dialog after logging out
+  }
+
+  changeLang(){
+    console.log(this.langCurrent);
+    this._translationMyAppService.setLanguage(this.langCurrent);
+    this.visible = false;
+    
   }
 
   ngOnDestroy() {

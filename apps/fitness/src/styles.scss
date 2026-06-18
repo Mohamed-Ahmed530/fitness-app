@@ -54,11 +54,24 @@ body {
     --animate-scroll-infinite: scroll-infinite 20s linear infinite;
 }
 
-@keyframes scroll-infinite {
-  0% {
-    transform: translateX(-33.333%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}   
+// (LTR) 
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+
+// (RTL)
+@keyframes scroll-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(33.3333%); } /* الحركة بالموجب لأن المتصفح عكس الاتجاه */
+}
+
+/*LTR animation*/
+.animate-scroll-infinite {
+  animation: scroll-left 15s linear infinite;
+}
+
+/*RTL animation*/
+html[dir="rtl"] .animate-scroll-infinite {
+  animation: scroll-right 15s linear infinite;
+}

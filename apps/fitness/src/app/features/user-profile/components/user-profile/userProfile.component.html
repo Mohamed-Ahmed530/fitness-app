@@ -4,21 +4,21 @@
     <div class="relative flex flex-col gap-10 justify-center items-center text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20 mt-10">
             <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="your goal" [userInfoResponse]="userProfileData().goal"></app-profile-card>
-            <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="level" [userInfoResponse]="activityLevel()"></app-profile-card>
+            <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="level" [userInfoResponse]="'profile.answers.levels.' + activityLevel() | translate"></app-profile-card>
             <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="weight" [userInfoResponse]="userProfileData().weight + ' kg'"></app-profile-card>
             
         </div>
         <div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center mb-10">
-                <app-settings-card settingsType="change password" icon="pi-sync">change password</app-settings-card>
-                <app-settings-card settingsType="select language" icon="pi-globe"><span>select language <br>( <span class="text-main">english</span>)</span></app-settings-card>
+                <app-settings-card settingsType="change password" icon="pi-sync">{{"profile.settings.changePassword" |translate}}</app-settings-card>
+                <app-settings-card settingsType="select language" icon="pi-globe"><span>{{"profile.settings.selectLanguage" |translate}}<br>( <span class="text-main">{{"profile.settings.currentLanguageName" |translate}}</span>)</span></app-settings-card>
                 <app-settings-card [icon]="currentMode() === 'dark' ? 'pi-moon' : 'pi-sun'">
-                    <div>mood ( <span class="text-main">{{currentMode()}}</span> ) <br>
+                    <div>{{"profile.settings.mode" |translate}} ( <span class="text-main">{{ 'profile.settings.' + currentMode() | translate }}</span> ) <br>
                      <p-toggleswitch (onChange)="toggleTheme()" [(ngModel)]="checked" />
                     </div></app-settings-card>
               
             </div>
-            <app-settings-card settingsType="logout" icon="pi-sign-out"><span class="text-main">logout</span></app-settings-card>
+            <app-settings-card settingsType="logout" icon="pi-sign-out"><span class="text-main">{{"profile.settings.logout" |translate}}</span></app-settings-card>
         </div>
     </div>
 

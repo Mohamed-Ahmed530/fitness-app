@@ -7,11 +7,12 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { AuthService } from '@fitness/auth-data-access';
 import { Subject, takeUntil } from 'rxjs';
 import { ProfileModel } from 'libs/auth/data-access/src/lib/interfaces/profile.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-user-profile',
-  imports: [ProfileCardComponent, SettingsCardComponent, ToggleSwitchModule, FormsModule],
+  imports: [ProfileCardComponent, SettingsCardComponent, ToggleSwitchModule, FormsModule,TranslatePipe],
   templateUrl: './userProfile.component.html',
   styleUrl: './userProfile.component.scss',
 })
@@ -28,6 +29,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getUserInfo();
+    this.getTheme();
   }
 
   getUserInfo() {
@@ -42,7 +44,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           'level2': 'beginner',
           'level3': 'intermediate',
           'level4': 'advanced',
-          'level5': 'true beast'
+          'level5': 'beast'
         };
 
         const currentLevel = this.userProfileData().activityLevel;
@@ -60,6 +62,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
 
 
+  }
+  getTheme(){
+    if (localStorage.getItem('theme')) {
+      this.currentMode.set(localStorage.getItem('theme')!);
+    }else{
+      this.currentMode.set('light');
+    }
+    
   }
 
   toggleTheme() {

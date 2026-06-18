@@ -2,35 +2,33 @@
     <div class="lg:flex justify-center items-center pt-28">
         <div class="w-full lg:w-3/5 flex flex-col justify-center py-2 gap-4 lg:gap-16">
             <h1 class="font-Baloo-Thambi-2 text-2xl lg:text-6xl text-black dark:text-white font-bold uppercase leading-tight">
-                <span class="block lg:inline">Your body can </span>
-                <span class="text-main block lg:inline">Stand Almost </span>
-                <span class="block lg:inline">Anything</span>
+                <span class="block lg:inline">{{"home.heroSection.yourbodycan" | translate}} </span>
+                <span class="text-main block lg:inline">{{"home.heroSection.standAlmost" |translate}}</span>
+                <span class="block lg:inline">{{"home.heroSection.anything" |translate}}</span>
             </h1>
 
             <div class="border-l-4 border-main pl-6 max-w-lg text-lg text-black dark:text-white font-Rubik font-normal">
-                It's your mind that needs convincing. Push past your limits, stay 
-                committed, and watch as your body transform into powerhouse of 
-                strength and resilience. Start your journey today & truly capable of!
+               {{"home.heroSection.heroPragraph"|translate}}
             </div>
 
             <div class="flex flex-col lg:flex-row gap-8">
                 <div class="stat-item">
                     <h3 class="text-2xl font-bold font-inter">1200+</h3>
-                    <p class="text-lg font-normal font-Rubik capitalize">Active Members</p>
+                    <p class="text-lg font-normal font-Rubik capitalize">{{"home.heroSection.activeMembers" |translate}}</p>
                 </div>
                 <div class="stat-item">
                     <h3 class="text-2xl font-bold font-inter">12+</h3>
-                    <p class="text-lg font-normal font-Rubik capitalize">Certified Trainers</p>
+                    <p class="text-lg font-normal font-Rubik capitalize">{{"home.heroSection.certifiedTrainers" |translate}}</p>
                 </div>
                 <div class="stat-item">
                     <h3 class="text-2xl font-bold font-inter">20+</h3>
-                    <p class="text-lg font-normal font-Rubik capitalize">Years Of Experience</p>
+                    <p class="text-lg font-normal font-Rubik capitalize">{{"home.heroSection.yearsOfExperience" |translate}}</p>
                 </div>
             </div>
     
             <div class="flex justify-center lg:justify-start items-center gap-8">
-                <app-action-button [text]="'Get Started'" [variant]="'filled'"></app-action-button>
-                <app-action-button [text]="'Explore More'" [variant]="'outline'"></app-action-button>
+                <app-action-button [text]="'home.heroSection.getStarted' | translate" [variant]="'filled'"></app-action-button>
+                <app-action-button [text]="'home.heroSection.exploreMore' | translate" [variant]="'outline'"></app-action-button>
             </div>
         </div>
         
