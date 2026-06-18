@@ -5,6 +5,7 @@ export interface IExploreCard {
   title: string;
   image: string;
   link?: string;
+  actionLabel?: string;
 }
 
 @Component({
