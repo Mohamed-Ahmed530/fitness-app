@@ -30,6 +30,7 @@ export class SettingsCardComponent implements OnDestroy {
   private readonly _translationMyAppService = inject(TranslationMyAppService);
   private destroy$ = new Subject<void>();
   private readonly _formBuilder = inject(FormBuilder);
+  private readonly _router = inject(Router);
 
   icon = input.required<string>();
   settingsType = input<string>();
@@ -108,7 +109,7 @@ export class SettingsCardComponent implements OnDestroy {
         console.log(res);
         this.cookieService.delete('fitness-access-token', '/');
         this._authService.isLoggedIn.set(false);
-        window.location.reload(); // Refresh the page after successful logout
+        this._router.navigate(['/home'])
 
       },
       error: (err) => {

@@ -108,7 +108,8 @@
         },
         "questions": {
             "goalQuestion": "ما هو هدفك الرياضي؟",
-            "levelQuestion": "ما هو مستوى نشاطك البدني الحالي؟"
+            "levelQuestion": "ما هو مستوى نشاطك البدني الحالي؟",
+            "weightQuestion": "كم وزنك؟"
         },
         "answers": {
             "goals": {

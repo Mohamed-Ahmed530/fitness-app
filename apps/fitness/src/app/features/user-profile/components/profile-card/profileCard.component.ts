@@ -8,10 +8,11 @@ import { AuthService } from '@fitness/auth-data-access';
 import { Subject, takeUntil } from 'rxjs';
 import { WheelPickerComponent } from '../wheel-picker/wheelPicker.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { BodyMetricsComponent } from "../body-metrics/bodyMetrics.component";
 
 @Component({
   selector: 'app-profile-card',
-  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent,TranslatePipe, WheelPickerComponent],
+  imports: [ButtonModule, DialogModule, InputTextModule, UserPlanComponent, TranslatePipe, BodyMetricsComponent],
   templateUrl: './profileCard.component.html',
   styleUrl: './profileCard.component.scss',
 })
@@ -63,13 +64,26 @@ export class ProfileCardComponent implements OnDestroy {
 
     this.questionAnswered.emit(); // to notify parent component to refresh the data
   }
-  userWeight: number = 70; 
-  userHeight: number = 165;
-  userAge: number = 25;
 
-  onWeightChange(weight: number) {
-    this.userWeight = weight;
+  saveMetrics(answer:number):void{
+    console.log('w',answer);
+    this._authService.editProfile({ weight: answer }).pipe(takeUntil(this.destroy$)).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.error('Error updating weight:', err);
+        }
+      });
+
+    
+      this.visible = false;  // to close the dialog
+
+    this.questionAnswered.emit(); // to notify parent component to refresh the data
+    
+
   }
+ 
 
   ngOnDestroy() {
     this.destroy$.next();

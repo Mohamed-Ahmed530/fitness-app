@@ -108,7 +108,8 @@
         },
         "questions": {
             "goalQuestion": "What is your Goal?",
-            "levelQuestion": "Your regular physical activity level?"
+            "levelQuestion": "Your regular physical activity level?",
+            "weightQuestion": "what is your weight ?"
         },
         "answers": {
             "goals": {
@@ -135,8 +136,8 @@
             "light": "Light",
             "logout": "Logout",
             "tapToChange": "Tap to change",
-            "personalizedPlanSubtitle":"this helps us create Your personalized plan",
-            "save":"save"
+            "personalizedPlanSubtitle": "this helps us create Your personalized plan",
+            "save": "save"
         }
     },
     "auth": {
@@ -153,15 +154,15 @@
         }
     },
     "accountOptions": {
-    "logoutConfirm": "Are you sure you want to logout?",
-    "cancel": "Cancel",
-    "logout": "Logout",
-    "changePassword": "Change Password",
-    "passwordPlaceholder": "Password",
-    "newPasswordPlaceholder": "New Password",
-    "save": "Save",
-    "chooseLanguage": "Choose Language",
-    "english": "English",
-    "arabic": "Arabic"
-  }
+        "logoutConfirm": "Are you sure you want to logout?",
+        "cancel": "Cancel",
+        "logout": "Logout",
+        "changePassword": "Change Password",
+        "passwordPlaceholder": "Password",
+        "newPasswordPlaceholder": "New Password",
+        "save": "Save",
+        "chooseLanguage": "Choose Language",
+        "english": "English",
+        "arabic": "Arabic"
+    }
 }

@@ -1,7 +1,5 @@
 <div class="text-gray-900 dark:text-white capitalize py-2 bg-gray-100 dark:bg-gray-900 rounded-xl">
-    <h3 class="font-Baloo-Thambi-2 text-5xl font-extrabold ">{{ question() }}</h3>
-    <h4 class="text-2xl">{{ 'profile.settings.personalizedPlanSubtitle' | translate }}</h4>
-    
+    <app-question [q]="question()"></app-question>
     <div class="flex flex-col gap-4 mt-2 items-center justify-center py-6">
         @for (answerKey of answers(); track $index) {
             @let cleanValue = answerKey.split('.').pop() || '';

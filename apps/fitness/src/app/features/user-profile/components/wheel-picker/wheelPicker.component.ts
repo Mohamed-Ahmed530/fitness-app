@@ -1,98 +1,200 @@
-import { Component, Input, Output, EventEmitter, ElementRef, AfterViewInit, OnDestroy, ViewChild, OnInit, Renderer2 } from '@angular/core';
-import KeenSlider, { KeenSliderInstance } from 'keen-slider';
+import { Component, ElementRef, ViewChild, input, output, signal, effect, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wheel-picker',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './wheelPicker.component.html',
   styleUrl: './wheelPicker.component.scss',
 })
-export class WheelPickerComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
-  slider?: KeenSliderInstance;
+export class WheelPickerComponent{
+@ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef<HTMLDivElement>;
 
-  // المدخلات الديناميكية
-  @Input() min: number = 80;
-  @Input() max: number = 100;
-  @Input() unit: string = 'kg';
-  @Input() defaultValue: number = 90;
+  min = input<number>(30);
+  max = input<number>(200);
+  step = input<number>(1);
+  unit = input<string>('kg');
 
-  // المخرج
-  @Output() valueChange = new EventEmitter<number>();
+  valueChange = output<number>();
+  selectedValue = signal<number>(90);
+  rangeArray = signal<number[]>([]);
 
-  options: number[] = [];
-  selectedValue: number = 0;
+  isDown = false;
+  startX = 0;
+  scrollLeftStart = 0;
 
-  constructor(private renderer: Renderer2) {} // نحتاج الـ Renderer لتحديث ستايل الـ slides
+  constructor() {
+   
+    effect(() => {
+      const arr: number[] = [];
+      for (let i = this.min(); i <= this.max(); i += this.step()) {
+        arr.push(i);
+      }
+      this.rangeArray.set(arr);
 
-  ngOnInit() {
-    this.selectedValue = this.defaultValue;
-    for (let i = this.min; i <= this.max; i++) {
-      this.options.push(i);
-    }
-  }
+      const checkAndScroll = () => {
+        const container = this.scrollContainer?.nativeElement;
+        if (container && container.offsetWidth > 0) { 
+          const items = container.querySelectorAll('.ruler-item');
+          const targetIndex = arr.indexOf(this.selectedValue());
 
-  ngAfterViewInit() {
-    const initialIndex = this.options.indexOf(this.defaultValue);
- setTimeout(() => {
-      if (this.sliderRef && this.sliderRef.nativeElement) {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      loop: false,
-      vertical: false, // تمرير أفقي
-      initial: initialIndex !== -1 ? initialIndex : 0,
-      // عرض الأرقام: نحتاج عدد فردي لإبراز المنتصف
-      slides: {
-        perView: 7, // جربي قيم مختلفة: 5 أو 7 أو 9
-        spacing: 0,
-        origin: 'center',
-      },
-      // تفعيل تأثير الـ snap للتوقف عند الأرقام بدقة
-      drag: true,
-      rubberband: true,
-      
-      // دالة لتحديث تأثير الحجم واللون أثناء التحريك
-      created: (s) => this.updateScale(s),
-      detailsChanged: (s) => this.updateScale(s),
-      
-      slideChanged: (s) => {
-        const currentIndex = s.track.details.rel;
-        const newValue = this.options[currentIndex];
+          if (items.length > 0 && targetIndex !== -1) {
+            const targetItem = items[targetIndex] as HTMLElement;
+            if (targetItem) {
+              
+              container.style.scrollBehavior = 'auto';
+              
+              targetItem.scrollIntoView({
+                behavior: 'auto',
+                block: 'nearest',
+                inline: 'center'
+              });
 
-        if (this.selectedValue !== newValue) {
-          this.selectedValue = newValue;
-          this.valueChange.emit(this.selectedValue);
+              this.updateItemsSizing(container, targetIndex);
+
+              setTimeout(() => {
+                container.style.scrollBehavior = 'smooth';
+              }, 50);
+            }
+          }
+        } else {
+          requestAnimationFrame(checkAndScroll);
         }
-      },
+      };
+
+      requestAnimationFrame(checkAndScroll);
     });
-  }},50)
   }
 
-  // دالة مخصصة لحساب المسافة من المنتصف وتطبيق التدرج في الحجم واللون
-  private updateScale(slider: KeenSliderInstance) {
-    const details = slider.track.details;
-    details.slides.forEach((slideDetails, idx) => {
-      // حساب مدى قرب السلايد من المنتصف (من -1 إلى 1)
-      const portion = slideDetails.portion;
-      const opacity = 1 - Math.abs(portion);
-      const scale = 1 + (0.5 * opacity); // تكبير الرقم المركزي بنسبة 50%
+  onScroll(event: Event): void {
+    const container = event.target as HTMLDivElement;
+    const containerCenter = container.getBoundingClientRect().left + (container.offsetWidth / 2);
+    const items = container.querySelectorAll('.ruler-item');
 
-      const slideEl = slider.container.children[idx];
-      
-      // تطبيق تأثير الحجم واللون باستخدام الـ Renderer2
-      this.renderer.setStyle(slideEl, 'transform', `scale(${scale})`);
-      this.renderer.setStyle(slideEl, 'opacity', Math.max(0.2, opacity)); // تبهيت الأرقام البعيدة
+    let closestItemIndex = 0;
+    let minDistance = Infinity;
 
-      // تطبيق لون برتقالي خالص للرقم النشط في المنتصف
-      if (opacity === 1) {
-        this.renderer.addClass(slideEl, 'active-orange');
-      } else {
-        this.renderer.removeClass(slideEl, 'active-orange');
+    items.forEach((item: any, i: number) => {
+      const itemRect = item.getBoundingClientRect();
+      const itemCenter = itemRect.left + (itemRect.width / 2);
+      const distance = Math.abs(containerCenter - itemCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestItemIndex = i;
+      }
+    });
+
+    if (closestItemIndex >= 0 && closestItemIndex < this.rangeArray().length) {
+      const newValue = this.rangeArray()[closestItemIndex];
+      if (this.selectedValue() !== newValue) {
+        this.selectedValue.set(newValue);
+        this.valueChange.emit(newValue);
+      }
+    }
+
+    this.updateItemsSizing(container, closestItemIndex);
+  }
+
+  private updateItemsSizing(container: HTMLDivElement, closestIndex: number): void {
+    const items = container.querySelectorAll('.ruler-item');
+    items.forEach((item: any, i: number) => {
+      const distanceFromActive = Math.abs(i - closestIndex);
+
+      let fontSize = '12px';
+      let opacity = '0.3';
+
+      switch (distanceFromActive) {
+        case 0:
+          fontSize = '48px';
+          opacity = '1';
+          break;
+        case 1:
+          fontSize = '38px';
+          opacity = '0.8';
+          break;
+        case 2:
+          fontSize = '24px';
+          opacity = '0.6';
+          break;
+        case 3:
+          fontSize = '16px';
+          opacity = '0.4';
+          break;
+        case 4:
+          fontSize = '12px';
+          opacity = '0.2';
+          break;
+        default:
+          fontSize = '12px';
+          opacity = '0';
+          break;
+      }
+
+      const label = item.querySelector('.label-number');
+      if (label) {
+        label.style.fontSize = fontSize;
+        item.style.opacity = opacity;
       }
     });
   }
 
-  ngOnDestroy() {
-    if (this.slider) this.slider.destroy();
+  onMouseDown(e: MouseEvent): void {
+    const container = this.scrollContainer.nativeElement;
+    this.isDown = true;
+    container.classList.add('active');
+    container.style.scrollBehavior = 'auto'; 
+    this.startX = e.pageX - container.offsetLeft;
+    this.scrollLeftStart = container.scrollLeft;
+  }
+
+  onMouseLeave(): void {
+    if (!this.isDown) return;
+    this.stopDragging();
+  }
+
+  onMouseUp(): void {
+    if (!this.isDown) return;
+    this.stopDragging();
+  }
+
+  onMouseMove(e: MouseEvent): void {
+    if (!this.isDown) return;
+    e.preventDefault();
+    const container = this.scrollContainer.nativeElement;
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - this.startX) * 1.5; 
+    container.scrollLeft = this.scrollLeftStart - walk;
+  }
+
+  private stopDragging(): void {
+    this.isDown = false;
+    const container = this.scrollContainer.nativeElement;
+    container.classList.remove('active');
+    container.style.scrollBehavior = 'smooth';
+    
+    const containerCenter = container.getBoundingClientRect().left + (container.offsetWidth / 2);
+    const items = container.querySelectorAll('.ruler-item');
+    
+    let closestItem: any = null;
+    let minDistance = Infinity;
+
+    items.forEach((item: any) => {
+      const itemRect = item.getBoundingClientRect();
+      const itemCenter = itemRect.left + (itemRect.width / 2);
+      const distance = Math.abs(containerCenter - itemCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestItem = item;
+      }
+    });
+
+    if (closestItem) {
+      const containerRect = container.getBoundingClientRect();
+      const itemCenterInContainer = (closestItem.getBoundingClientRect().left + closestItem.offsetWidth / 2) - containerRect.left;
+      const targetScroll = container.scrollLeft + (itemCenterInContainer - container.offsetWidth / 2);
+      container.scrollLeft = targetScroll;
+    }
   }
 }
