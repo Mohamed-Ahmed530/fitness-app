@@ -1,0 +1,20 @@
+:host ::ng-deep {
+
+  .p-toast-message-content {
+    display: flex;
+    align-items: top; 
+    justify-content: flex-start; 
+    text-align: left; 
+    gap: 12px;  
+  }
+
+  
+  .p-toast-message-text {
+    flex: 1;
+    text-align: left;
+  }
+
+  .p-dialog-header {
+    padding: 0 !important;
+  }
+}

@@ -6,6 +6,7 @@ export const appRoutes: Route[] = [
         path: '', loadComponent: () => import('./core/layouts/main-layout/main-layout.component').then((c) => c.MainLayoutComponent), children: [
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', loadComponent: () => import('./features/home/home.component').then((c) => c.HomeComponent), title: 'Home' },
+            { path: 'profile', loadComponent: () => import('./features/user-profile/components/user-profile/userProfile.component').then((c) => c.UserProfileComponent), canActivate:[authGuard], title: 'Profile' },
         ]
     },
     {

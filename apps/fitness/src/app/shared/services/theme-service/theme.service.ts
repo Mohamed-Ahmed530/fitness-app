@@ -23,7 +23,7 @@ export class ThemeService {
       localStorage.setItem('theme', newTheme);
       this.theme.set(newTheme);
       this.applyTheme(newTheme);
-    }
+    } 
   }
 
   private applyTheme(theme: string) {

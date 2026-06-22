@@ -5,6 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '@fitness/auth-data-access';
 import { CookieService } from 'ngx-cookie-service';
 import { ActionButtonComponent } from "../../../../../shared/components/ui/action-button/action-button.component";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -16,31 +17,35 @@ export class NavbarComponent implements OnInit {
 
     private readonly authService = inject(AuthService);
     private readonly cookieService = inject(CookieService);
+    private readonly translate = inject(TranslateService);
 
     isScroll = signal<boolean>(false);
 
-    items: MenuItem[] | undefined;
-    private initMenuItems(): void {
-        this.items = [
-            {
-                label: 'Home', routerLink: '/home'
-            },
-            {
-                label: 'About', routerLink: '/about'
-            },
-            {
-                label: 'Classes', routerLink: '/classes'
-            },
-            {
-                label: 'Healthy', routerLink: '/healthy'
-            },
-        ];
-    }
+   items = computed<MenuItem[]>(() => {
 
+
+    return [
+      {
+        label: this.translate.instant('nav.home'), 
+        routerLink: '/home'
+      },
+      {
+        label: this.translate.instant('nav.about'),
+        routerLink: '/about'
+      },
+      {
+        label: this.translate.instant('nav.classes'),
+        routerLink: '/classes'
+      },
+      {
+        label: this.translate.instant('nav.healthy'),
+        routerLink: '/healthy'
+      },
+    ];
+  });
     loggedIn = computed(() => this.authService.isLoggedIn())
 
     ngOnInit(): void {
-        this.initMenuItems();
         this.checkAuthStatus();
     }
 

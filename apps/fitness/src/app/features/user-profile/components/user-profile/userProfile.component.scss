@@ -1,0 +1,9 @@
+:host::ng-deep{
+    .p-toggleswitch-slider {
+    background-color: var(--color-gray-900) !important;
+    }
+    .p-toggleswitch-checked .p-toggleswitch-slider{
+    background-color: var(--color-main) !important;
+}
+
+}

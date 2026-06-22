@@ -1,0 +1,20 @@
+<div class="text-gray-900 dark:text-white capitalize py-2 bg-gray-100 dark:bg-gray-900 rounded-xl">
+    <app-question [q]="question()"></app-question>
+    <div class="flex flex-col gap-4 mt-2 items-center justify-center py-6">
+        @for (answerKey of answers(); track $index) {
+            @let cleanValue = answerKey.split('.').pop() || '';
+            
+            <div class="flex items-center gap-4 w-77.75 h-12 px-4 rounded-full border bg-[#D3D3D333] transition-colors duration-300"
+                 [class]="cleanValue === checkedAnswer ? 'text-main border-main' : 'border-gray-300 text-gray-900'">
+                
+                <label class="w-full text-start dark:text-white cursor-pointer" [for]="'q'+$index">
+                    {{ answerKey | translate }}
+                </label>
+                
+                <input [(ngModel)]="checkedAnswer" class="accent-main cursor-pointer" type="radio" [id]="'q'+$index" name="plan" [value]="cleanValue">
+            </div>
+        }
+    </div>
+    
+    <app-button [disabled]="checkedAnswer === ''" [label]="'profile.settings.save' | translate" alignment="center" (click)="onClick()"></app-button>    
+</div>
