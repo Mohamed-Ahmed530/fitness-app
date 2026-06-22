@@ -1,0 +1,9 @@
+<div (click)="onClick()"
+    class="w-24.75 h-10 rounded-full capitalize font-Baloo-Thambi-2 font-bold text-xl
+      flex justify-center items-center cursor-pointer transition-all duration-200"
+      [class.bg-main]="isActive()"
+     [class.text-gray-100]="isActive()"
+     [class.hover:text-gray-100]="isActive()"
+     [class.hover:text-main]="!isActive()"
+     [class.text-gray-900]="!isActive()"
+     [class.dark:text-gray-100]="!isActive()">{{tabName()}}</div>
