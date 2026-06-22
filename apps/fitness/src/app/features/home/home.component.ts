@@ -3,12 +3,16 @@ import { HeroSectionComponent } from "./components/hero-section/hero-section.com
 import { ServiceBarComponent } from "../../shared/ui/service-bar/serviceBar.component";
 import { AboutComponent } from "../about/components/about-component/about.component";
 import { WhyUsComponent } from "./components/why-us/why-us.component";
-import { ExploreCardComponent } from "../../shared/components/ui/explore-card/explore-card.component";
+
 import { WorkoutsComponent } from "./components/workouts/workouts.component";
+import { HealthySectionComponent } from './components/healthy-section/healthy-section.component';
+
 
 @Component({
   selector: 'app-home',
-  imports: [HeroSectionComponent, ServiceBarComponent, AboutComponent, WhyUsComponent, ExploreCardComponent, WorkoutsComponent],
+  imports: [HeroSectionComponent, ServiceBarComponent, AboutComponent, WhyUsComponent, WorkoutsComponent, HealthySectionComponent],
+
+
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
