@@ -1,34 +1,52 @@
 <section class="bg-[url(/images/workout-background.jpg)] bg-cover bg-center relative px-21.5">
     <div class="relative z-2">
-        <app-section-name 
-            [sectionName]="'home.workoutsSection.name' | translate" 
-            [sectionTitle]="'home.workoutsSection.title' | translate"
-            [centerAlignment]="true">
+        <app-section-name [sectionName]="'home.workoutsSection.name' | translate"
+            [sectionTitle]="'home.workoutsSection.title' | translate" [centerAlignment]="true">
         </app-section-name>
     </div>
 
- 
     <div class="bg-[#a5a5a5] dark:bg-gray-900 w-full h-70 absolute top-17 left-0 right-0 z-1"></div>
-   
+
     <div class="relative z-1">
         <h3 class="text-center font-Baloo-Thambi-2 font-bold text-4xl text-gray-900 dark:text-gray-100 mb-8">
             {{ 'home.workoutsSection.headingPart1' | translate }} <br>
-            {{ 'home.workoutsSection.headingPart2' | translate }} 
+            {{ 'home.workoutsSection.headingPart2' | translate }}
             <span class="text-main">{{ 'home.workoutsSection.headingPart3' | translate }}</span>
         </h3>
 
-         
+        <div class="flex items-center justify-center gap-2 w-full max-w-4xl mx-auto mb-8 px-4 relative">
+            
+                <app-tab [tabName]="'home.workoutsSection.fullBody' | translate" [isActive]="true"></app-tab>
 
-   <div class="flex justify-center items-center flex-wrap gap-4 mb-8">
-    @for (tab of tabs; track $index) {
-        <app-tab 
-            [tabName]="tab" 
-            [isActive]="activeTab() === tab" 
-            (tabClick)="clickk(tab)">
-        </app-tab>
-    }
-</div>
+            <button (click)="scrollTabs(-150)"
+                class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full shadow hover:text-main transition-colors cursor-pointer z-10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                    stroke="currentColor" class="w-5 h-5 transform rtl:rotate-180">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
 
-        <app-carousel [rowsPerColumn]="1" [carouselItems]="workouts()"></app-carousel> 
+            <div id="tabsContainer"
+                class="w-full overflow-x-auto no-scrollbar scroll-smooth flex items-center gap-4 whitespace-nowrap py-2">
+
+
+                @for (mG of musclesGroup(); track $index) {
+                <app-tab [tabName]="mG.name" [isActive]="activeTab() === mG.name" (tabClick)="getMuscles(mG)">
+                </app-tab>
+                }
+
+            </div>
+
+            <button (click)="scrollTabs(150)"
+                class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full shadow hover:text-main transition-colors cursor-pointer z-10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                    stroke="currentColor" class="w-5 h-5 transform rtl:rotate-180">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+
+        </div>
+
+        <app-carousel [rowsPerColumn]="1" [carouselItems]="muscles()"></app-carousel>
     </div>
 </section>

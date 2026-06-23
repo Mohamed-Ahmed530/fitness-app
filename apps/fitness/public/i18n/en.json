@@ -53,7 +53,8 @@
             "title": "Workouts",
             "headingPart1": "Transform Your Body with Our",
             "headingPart2": "Dynamic ",
-            "headingPart3": "Upcoming Workouts"
+            "headingPart3": "Upcoming Workouts",
+            "fullBody": "full body"
         },
         "whyUsSection": {
             "subtitle": "Why Us",
@@ -102,7 +103,7 @@
     },
     "profile": {
         "cards": {
-            "your goal": "Your Goal",
+            "yourGoal": "Your Goal",
             "level": "Level",
             "weight": "Weight"
         },

@@ -1,4 +1,4 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from 'apps/fitness/src/app/shared/components/ui/input/input.component';
@@ -18,12 +18,12 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule,TranslatePipe],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [MessageService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   private readonly _authService = inject(AuthService);
   private readonly _formBuilder = inject(FormBuilder);
@@ -97,6 +97,10 @@ export class LoginComponent {
     this.togglePassword.update(prev => !prev);
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 
 

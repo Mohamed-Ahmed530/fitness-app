@@ -7,9 +7,9 @@ import { ExploreCardComponent } from "../explore-card/explore-card.component";
 
 // 1. Define the Product interface directly
 export interface Item {
-    title: string;
+    _id: string;
+    name: string;
     image: string;
-    link: string;
 }
 
 @Component({

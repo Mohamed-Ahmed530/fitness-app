@@ -3,7 +3,7 @@
     
     <div class="relative flex flex-col gap-10 justify-center items-center text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20 mt-10">
-            <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="your goal" [userInfoResponse]="userProfileData().goal"></app-profile-card>
+            <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="yourGoal" [userInfoResponse]="userProfileData().goal"></app-profile-card>
             <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="level" [userInfoResponse]="'profile.answers.levels.' + activityLevel() | translate"></app-profile-card>
             <app-profile-card (questionAnswered)="getUserInfo()" cardTitle="weight" [userInfoResponse]="userProfileData().weight + ' kg'"></app-profile-card>
             
