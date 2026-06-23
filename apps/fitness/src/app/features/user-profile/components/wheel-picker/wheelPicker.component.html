@@ -1,0 +1,45 @@
+<div class="flex flex-col items-center justify-center p-6 bg-transparent  w-full max-w-2xl mx-auto select-none">
+  
+  <div class="text-center mb-2">
+    <span class="text-main capitalize ">{{ unit() }}</span>
+  </div>
+
+  <div class="relative w-full flex flex-col items-center justify-center pb-6 overflow-hidden">
+    
+    <div 
+      #scrollContainer
+      (scroll)="onScroll($event)"
+      (mousedown)="onMouseDown($event)"
+      (mouseleave)="onMouseLeave()"
+      (mouseup)="onMouseUp()"
+      (mousemove)="onMouseMove($event)"
+      class="flex overflow-x-auto gap-4 h-16.75 w-full items-center scroll-smooth no-scrollbar cursor-grab">
+      
+      <div class="shrink-0 w-[50%] pointer-events-none"></div>
+
+      @for (num of rangeArray(); track num) {
+        <div [id]="'item-' + num" class="shrink-0 w-auto flex flex-col items-center justify-center  pointer-events-none ruler-item" 
+        [style]="{
+         'font-size': num === selectedValue() ? '48px' : '12px',
+         'opacity': num === selectedValue() ? '1' : '0.3'
+       }">
+          
+          <span 
+            class="font-extrabold transition-all duration-150 label-number block text-center whitespace-nowrap"
+            [class]="{
+              'text-main': num === selectedValue(),
+              'text-gray-900 dark:text-gray-300': num !== selectedValue()
+            }">
+            {{ num }}
+          </span>
+          
+        </div>
+      }
+
+      <div class="shrink-0 w-[50%] pointer-events-none"></div>
+    </div>
+
+    <div class="absolute bottom-0 w-0 h-0 border-l-10 border-l-transparent border-r-10 border-r-transparent border-b-12 border-b-main z-10 drop-shadow pointer-events-none"></div>
+
+  </div>
+</div>

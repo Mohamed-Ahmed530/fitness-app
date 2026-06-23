@@ -10,20 +10,27 @@ import { ErrorMessageComponent } from "apps/fitness/src/app/shared/components/ui
 import { AuthService } from '@fitness/auth-data-access';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { TranslatePipe } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule,TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  providers: [MessageService]
 })
 export class LoginComponent {
-  loginForm!:FormGroup;
+  loginForm!: FormGroup;
   private readonly _authService = inject(AuthService);
   private readonly _formBuilder = inject(FormBuilder);
   private readonly _router = inject(Router);
   private destroy$ = new Subject<void>();
   private readonly cookieService = inject(CookieService);
+  private readonly messageService = inject(MessageService);
 
 
   togglePassword: WritableSignal<boolean> = signal(false);
@@ -53,39 +60,44 @@ export class LoginComponent {
     })
   }
 
-  submitForm():void{
+  submitForm(): void {
     if (this.loginForm.valid) {
-      // this.errorMsg.set("");
       if (!this.loading()) {
         this.loading.set(true);
         this._authService.signin(this.loginForm.value)
-        .pipe(takeUntil(this.destroy$), finalize(()=> this.loading.set(false))).subscribe({
-          next:(res)=>{
-            if (res.message === "success") {
-              timer(1000).pipe(takeUntil(this.destroy$)).subscribe(()=>{
-                this.cookieService.set('fitness-access-token',res.token);
-                this._router.navigate(['/home']);
-              })
-              // this.success.set(res.message);
+          .pipe(takeUntil(this.destroy$), finalize(() => this.loading.set(false))).subscribe({
+            next: (res) => {
+              if (res.message === "success") {
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Navigate to home...' });
+
+                timer(2000).pipe(takeUntil(this.destroy$)).subscribe(() => {
+                  this.cookieService.set('fitness-access-token', res.token);
+                  this._authService.isLoggedIn.set(true);
+
+                  this._router.navigate(['/home']);
+                })
+
+              }
+            },
+            error: (err: HttpErrorResponse) => {
+              if (err.error.error) {
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.error });
+              }
             }
-          },
-          error:(err: HttpErrorResponse)=>{
-            if (err.error.error) {
-              // this.errorMsg.set(err.error.error);
-            }
-          }
-        })
+          })
       }
 
-    }else{
+    } else {
       this.loginForm.markAllAsTouched();
     }
   }
 
-   // toggle password
+  // toggle password
   togglePasswordVisibility(): void {
     this.togglePassword.update(prev => !prev);
   }
 
-  
+
+
+
 }

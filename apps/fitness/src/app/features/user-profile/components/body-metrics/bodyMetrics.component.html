@@ -1,0 +1,6 @@
+<div class="py-4">
+    <app-question [q]="question()"></app-question>
+     <app-wheel-picker [min]="40" [max]="150" [step]="1" unit="kg" (valueChange)="yourTrackFunction($event)">
+    </app-wheel-picker>
+    <app-button [disabled]="trackedNumber()==0" [label]="'profile.settings.save' | translate" alignment="center" (click)="save()"></app-button>    
+</div>
