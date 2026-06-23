@@ -1,7 +1,7 @@
 <section class="relative min-h-screen py-32 px-4 md:px-20 overflow-hidden flex flex-col items-center">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="/images/healthy-bg.jpg" alt="Healthy Background" class="w-full h-full object-cover">
+        <img ngSrc="/images/healthy-bg.jpg" alt="Healthy Background" fill class="object-cover" priority>
         <div class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
     </div>
 
@@ -34,30 +34,15 @@
             }
         </div>
 
-        <!-- Meals Grid -->
+        <!-- Meals Carousel -->
         @if (loading()) {
             <div class="flex justify-center items-center py-20">
                 <i class="pi pi-spin pi-spinner text-main text-4xl"></i>
             </div>
         } @else {
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full px-4 relative z-20">
-                @for (card of getExploreCards(); track card.title) {
-                    <app-explore-card [data]="card"></app-explore-card>
-                }
+            <div class="w-full relative z-20">
+                <app-carousel [rowsPerColumn]="2" [carouselItems]="allExploreCards()"></app-carousel>
             </div>
-
-            <!-- Pagination Indicators -->
-            @if (totalPages() > 1) {
-                <div class="flex items-center justify-center gap-3 mt-16 relative z-20">
-                    @for (page of pageNumbers(); track page) {
-                        <button 
-                            (click)="setPage(page)"
-                            [class.active-dot]="page === currentPage()"
-                            class="pagination-dot transition-all duration-300">
-                        </button>
-                    }
-                </div>
-            }
 
             @if (meals().length === 0) {
                 <div class="text-white text-center py-20">

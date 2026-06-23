@@ -72,14 +72,28 @@
                 <!-- Ingredients Section -->
                 <div class="flex flex-col gap-6 mt-4">
                     <h2 class="text-3xl font-bold font-Baloo-Thambi-2">Ingredients</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 bg-black/10 p-8 rounded-3xl">
-                        @for (item of getIngredients(); track item.name) {
-                            <div class="flex justify-between items-center border-b border-gray-800 pb-2">
-                                <span class="text-gray-300">{{ item.name }}</span>
-                                <span class="text-main font-bold">{{ item.measure }}</span>
-                            </div>
-                        }
-                    </div>
+                    
+                    @if (getIngredients().length > 4) {
+                        <p-carousel [value]="getIngredients()" [numVisible]="4" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+                            <ng-template let-item #item>
+                                <div class="px-2 h-full">
+                                    <div class="p-6 bg-black/10 rounded-3xl border border-gray-800 flex flex-col items-center justify-center text-center h-full min-h-[140px] hover:border-main/50 transition-colors group">
+                                        <span class="text-gray-300 font-medium block mb-2 group-hover:text-white transition-colors">{{ item.name }}</span>
+                                        <span class="text-main font-bold">{{ item.measure }}</span>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    } @else {
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 bg-black/10 p-8 rounded-3xl">
+                            @for (item of getIngredients(); track item.name) {
+                                <div class="flex justify-between items-center border-b border-gray-800 pb-2">
+                                    <span class="text-gray-300">{{ item.name }}</span>
+                                    <span class="text-main font-bold">{{ item.measure }}</span>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             }
         </main>
