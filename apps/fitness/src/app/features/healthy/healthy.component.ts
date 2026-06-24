@@ -25,7 +25,8 @@ export class HealthyComponent implements OnInit {
   totalPages = computed(() => Math.ceil(this.meals().length / 6));
   
   allExploreCards = computed(() => this.meals().map(meal => ({
-    title: meal.strMeal.toUpperCase(),
+    _id: meal.idMeal,
+    name: meal.strMeal.toUpperCase(),
     image: meal.strMealThumb,
     link: `/healthy/meal/${meal.idMeal}`
   })));
