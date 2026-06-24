@@ -19,3 +19,9 @@ export interface MuscleGroup {
   _id: string;
   name: string;
 }
+export interface RondomMuscles {
+  message: string;
+  totalMuscles: number;
+  muscles: Muscle[];
+}
+

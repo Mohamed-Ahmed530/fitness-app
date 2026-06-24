@@ -1,8 +1,27 @@
 :host ::ng-deep {
-    .p-menubar {
-        @apply bg-transparent border-none;
-        .p-menubar-root-list {
-            @apply flex-1 justify-center; 
-        }
+  .p-menubar {
+    @apply bg-transparent border-none;
+    .p-menubar-root-list {
+      @apply flex-1 justify-center;
     }
+  }
+
+  .p-menubar-item.p-focus > .p-menubar-item-content,
+  .p-menubar-item-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .p-menubar-item-link {
+    background: transparent !important;
+    border: none !important;
+
+    &:hover,
+    &:focus,
+    &.p-menuitem-link-active {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
 }

@@ -13,39 +13,25 @@
             {{ 'home.workoutsSection.headingPart2' | translate }}
             <span class="text-main">{{ 'home.workoutsSection.headingPart3' | translate }}</span>
         </h3>
+        
 
-        <div class="flex items-center justify-center gap-2 w-full max-w-4xl mx-auto mb-8 px-4 relative">
-            
-                <app-tab [tabName]="'home.workoutsSection.fullBody' | translate" [isActive]="true"></app-tab>
+        <div class="flex justify-center items-center gap-2 w-full lg:w-200 max-w-6xl mx-auto px-4 overflow-hidden mb-6">
+    
+    <div class="shrink-0">
+        <app-tab [tabName]="'home.workoutsSection.fullBody' | translate" [isActive]="activeTab() === 'full body'" (tabClick)="getFullBodyWorkout()"></app-tab>
+    </div>
 
-            <button (click)="scrollTabs(-150)"
-                class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full shadow hover:text-main transition-colors cursor-pointer z-10 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                    stroke="currentColor" class="w-5 h-5 transform rtl:rotate-180">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-            </button>
+    <div class="flex-1 min-w-0">
+        <p-carousel [showIndicators]="false" [value]="musclesGroup()" [numVisible]="5" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions">
+            <ng-template let-muscle #item>
+                <div class="px-1"> <app-tab [tabName]="muscle.name" [isActive]="activeTab() === muscle.name" (tabClick)="getMuscles(muscle)">
+                    </app-tab>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
 
-            <div id="tabsContainer"
-                class="w-full overflow-x-auto no-scrollbar scroll-smooth flex items-center gap-4 whitespace-nowrap py-2">
-
-
-                @for (mG of musclesGroup(); track $index) {
-                <app-tab [tabName]="mG.name" [isActive]="activeTab() === mG.name" (tabClick)="getMuscles(mG)">
-                </app-tab>
-                }
-
-            </div>
-
-            <button (click)="scrollTabs(150)"
-                class="bg-gray-100 dark:bg-gray-800 p-2 rounded-full shadow hover:text-main transition-colors cursor-pointer z-10 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                    stroke="currentColor" class="w-5 h-5 transform rtl:rotate-180">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
-
-        </div>
+</div>
 
         <app-carousel [rowsPerColumn]="1" [carouselItems]="muscles()"></app-carousel>
     </div>

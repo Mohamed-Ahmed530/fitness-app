@@ -6,6 +6,7 @@ import { TabComponent } from "apps/fitness/src/app/shared/components/ui/tab/tab.
 import { WorkoutService } from '../../services/workout/workout.service';
 import { Subject, takeUntil} from 'rxjs';
 import { Muscle, MuscleGroup} from '../../interfaces/workout';
+import { CarouselModule } from 'primeng/carousel';
 
 
 // Define the Workout interface directly
@@ -16,7 +17,7 @@ export interface Workout {
 }
 @Component({
   selector: 'app-workouts',
-  imports: [SectionNameComponent, CarouselComponent, TranslatePipe, TabComponent,TranslatePipe],
+  imports: [SectionNameComponent, CarouselComponent, TranslatePipe, TabComponent,TranslatePipe,CarouselModule],
   templateUrl: './workouts.component.html',
   styleUrl: './workouts.component.scss',
 })
@@ -27,11 +28,34 @@ export class WorkoutsComponent implements OnInit,OnDestroy {
   muscles =signal<Muscle[]>([]);
 
 
-  activeTab = signal<string>('Abdominals');
+  activeTab = signal<string>('full body');
+  responsiveOptions: any[] | undefined;
 
   ngOnInit(): void {
     this.getAllMusclesGroups();
-    this.getMuscles({"_id": "69d982ed85f6bfa972bf2218","name": "Abdominals"});
+    this.getFullBodyWorkout();
+    this.responsiveOptions = [
+            {
+                breakpoint: '1400px',
+                numVisible: 4,
+                numScroll: 1
+            },
+            {
+                breakpoint: '1199px',
+                numVisible: 3,
+                numScroll: 1
+            },
+            {
+                breakpoint: '767px',
+                numVisible: 2,
+                numScroll: 1
+            },
+            {
+                breakpoint: '575px',
+                numVisible: 1,
+                numScroll: 1
+            }
+        ];
   }
 
   getAllMusclesGroups(): void {
@@ -55,6 +79,18 @@ export class WorkoutsComponent implements OnInit,OnDestroy {
       }
     })
 
+
+  }
+
+  getFullBodyWorkout(){
+    this.activeTab.set('full body');
+    this._workoutService.getRondomMuscles().pipe(takeUntil(this.destroy$)).subscribe({
+      next:(res)=>{
+        this.muscles.set(res.muscles)
+        console.log(res.muscles);
+        
+      }
+    })
 
   }
 
