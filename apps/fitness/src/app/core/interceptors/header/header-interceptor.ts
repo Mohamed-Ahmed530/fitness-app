@@ -4,6 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 
 export const headerInterceptor: HttpInterceptorFn = (req, next) => {
+
+  if (req.url.includes('themealdb.com')) {
+    return next(req); // Skip adding any headers completely
+  }
+  
   const cookieService = inject(CookieService);
   const injector = inject(Injector);
 
@@ -17,7 +22,6 @@ export const headerInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   if (req.url.includes('elevate')) {
-    // بنجيب الـ TranslateService يدوياً هنا عند الحاجة فقط لتجنب الـ Circular Dependency
     const translateService = injector.get(TranslateService);
     const lang = translateService.currentLang() || 'en';
     req = req.clone({
@@ -27,6 +31,7 @@ export const headerInterceptor: HttpInterceptorFn = (req, next) => {
     });
     
   }
+  
   
 
   return next(req);

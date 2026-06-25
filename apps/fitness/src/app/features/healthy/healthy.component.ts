@@ -47,7 +47,8 @@ export class HealthyComponent implements OnInit {
     this.loading.set(true);
     this.mealsService.getMealsByCategory(category).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        this.meals.set(res.meals || []);
+        this.meals.set(res.meals||[]);
+        console.log(res);
         this.loading.set(false);
       },
       error: () => {
