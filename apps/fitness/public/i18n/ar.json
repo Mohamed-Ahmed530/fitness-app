@@ -152,7 +152,12 @@
             "submitButton": "دخول",
             "noAccountText": "ليس لديك حساب بعد؟",
             "registerLink": "سجّل الآن"
-        }
+        },
+        "successTitle": "نجاح",
+        "navigating": "جاري الانتقال إلى الصفحة الرئيسية...",
+        "errorTitle": "خطأ",
+        "logIn": "تسجيل الدخول",
+        "signUp": "إنشاء حساب"
     },
     "accountOptions": {
         "logoutConfirm": "هل أنت متأكد أنك تريد تسجيل الخروج؟",

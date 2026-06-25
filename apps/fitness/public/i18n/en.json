@@ -152,7 +152,12 @@
             "submitButton": "Login",
             "noAccountText": "Don't have an account yet?",
             "registerLink": "Register"
-        }
+        },
+        "successTitle": "Success",
+        "navigating": "Navigating to home...",
+        "errorTitle": "Error",
+        "logIn": "Login",
+        "signUp": "Sign up"
     },
     "accountOptions": {
         "logoutConfirm": "Are you sure you want to logout?",

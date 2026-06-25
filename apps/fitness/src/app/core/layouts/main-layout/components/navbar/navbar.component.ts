@@ -5,11 +5,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '@fitness/auth-data-access';
 import { CookieService } from 'ngx-cookie-service';
 import { ActionButtonComponent } from "../../../../../shared/components/ui/action-button/action-button.component";
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [MenubarModule, RouterLink, RouterLinkActive, ActionButtonComponent],
+  imports: [MenubarModule, RouterLink, RouterLinkActive, ActionButtonComponent,TranslatePipe],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })

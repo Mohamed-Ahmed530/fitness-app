@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   private readonly cookieService = inject(CookieService);
   private readonly messageService = inject(MessageService);
+  private readonly translate = inject(TranslateService);
 
 
   togglePassword: WritableSignal<boolean> = signal(false);
@@ -68,7 +69,15 @@ export class LoginComponent implements OnInit, OnDestroy {
           .pipe(takeUntil(this.destroy$), finalize(() => this.loading.set(false))).subscribe({
             next: (res) => {
               if (res.message === "success") {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Navigate to home...' });
+                const successTitle = this.translate.instant('auth.successTitle');
+                const successDetail = this.translate.instant('auth.navigating');
+
+                this.messageService.add({ 
+                  severity: 'success', 
+                  summary: successTitle, 
+                  detail: successDetail 
+                });
+                // this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Navigate to home...' });
 
                 timer(2000).pipe(takeUntil(this.destroy$)).subscribe(() => {
                   this.cookieService.set('fitness-access-token', res.token);
@@ -81,7 +90,14 @@ export class LoginComponent implements OnInit, OnDestroy {
             },
             error: (err: HttpErrorResponse) => {
               if (err.error.error) {
-                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.error });
+                const errorTitle = this.translate.instant('auth.errorTitle');
+                
+                this.messageService.add({ 
+                  severity: 'error', 
+                  summary: errorTitle, 
+                  detail: err.error.error 
+                });
+                // this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.error });
               }
             }
           })
