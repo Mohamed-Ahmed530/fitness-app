@@ -54,7 +54,8 @@
             "headingPart1": "Transform Your Body with Our",
             "headingPart2": "Dynamic ",
             "headingPart3": "Upcoming Workouts",
-            "fullBody": "full body"
+            "fullBody": "full body",
+            "noMuscles":"No workouts available for this muscle group yet."
         },
         "whyUsSection": {
             "subtitle": "Why Us",

@@ -54,7 +54,8 @@
             "headingPart1": "غيّر مظهر جسدك من خلال",
             "headingPart2": "تماريننا الحماسية ",
             "headingPart3": "القادمة",
-            "fullBody": "الجسم كامل"
+            "fullBody": "الجسم كامل",
+            "noMuscles":"لا توجد تمارين متاحة لهذه العضلة حالياً"
         },
         "whyUsSection": {
             "subtitle": "لماذا تختارنا؟",

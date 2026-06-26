@@ -1,7 +1,16 @@
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-  }
+:host::ng-deep {
+    .p-carousel-indicator-active .p-carousel-indicator-button {
+    background-color:var(--color-main) !important;
+    width: 30px;
+    transition: all var(--p-carousel-transition-duration) ease;
+}
+.p-carousel-indicator-button {
+ 
+    background-color: var(--color-gray-900);
+    width: 10px;
+    height: 10px;
+    transition: all var(--p-carousel-transition-duration), color var(--p-carousel-transition-duration), outline-color var(--p-carousel-transition-duration), box-shadow var(--p-carousel-transition-duration);
+  
+}
+
 }

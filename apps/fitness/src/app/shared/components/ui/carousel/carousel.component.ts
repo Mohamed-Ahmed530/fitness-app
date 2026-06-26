@@ -21,6 +21,10 @@ export interface Item {
 })
 export class CarouselComponent implements OnInit {
     responsiveOptions: any[] | undefined;
+        carouselItems = input.required<Item[]>();
+    // Set how many rows you want stacked vertically per slide 
+    rowsPerColumn = input.required<number>();
+    defaultImage = input<string>();
 
     ngOnInit(): void {
         this.responsiveOptions = [
@@ -41,9 +45,7 @@ export class CarouselComponent implements OnInit {
             }
         ];
     }
-    carouselItems = input.required<Item[]>();
-    // Set how many rows you want stacked vertically per slide 
-    rowsPerColumn = input.required<number>();
+
 
     //  Compute chunks dynamically from the raw data
     groupedItems = computed(() => {
