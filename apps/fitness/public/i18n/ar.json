@@ -171,5 +171,30 @@
         "chooseLanguage": "اختر اللغة",
         "english": "الإنجليزية",
         "arabic": "العربية"
+    },
+    "healthy": {
+        "name": "تغذية صحية",
+        "title": "صحي",
+        "headingPart1": "غذِّ رحلتك الرياضية بـ ",
+        "headingPart2": "خطط وجبات",
+        "headingPart3": " مخصصة لك",
+        "noMeals": "لم يتم العثور على وجبات لهذه الفئة.",
+        "ingredients": "المكونات",
+        "energy": "طاقة",
+        "protein": "بروتين",
+        "carbs": "كربوهيدرات",
+        "fat": "دهون",
+        "tabs": {
+            "breakfast": "إفطار",
+            "lunch": "غداء",
+            "dinner": "عشاء",
+            "seafood": "مأكولات بحرية",
+            "pasta": "باستا",
+            "side": "جانبي",
+            "starter": "مقبلات",
+            "vegan": "نباتي صرف",
+            "vegetarian": "نباتي",
+            "dessert": "حلويات"
+        }
     }
 }

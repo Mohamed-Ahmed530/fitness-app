@@ -171,5 +171,30 @@
         "chooseLanguage": "Choose Language",
         "english": "English",
         "arabic": "Arabic"
+    },
+    "healthy": {
+        "name": "Healthy Nutritions",
+        "title": "HEALTHY",
+        "headingPart1": "FUEL YOUR FITNESS JOURNEY WITH CUSTOMIZED ",
+        "headingPart2": "MEAL PLANS",
+        "headingPart3": " FOR YOU",
+        "noMeals": "No meals found for this category.",
+        "ingredients": "Ingredients",
+        "energy": "Energy",
+        "protein": "Protein",
+        "carbs": "Carbs",
+        "fat": "Fat",
+        "tabs": {
+            "breakfast": "Breakfast",
+            "lunch": "Lunch",
+            "dinner": "Dinner",
+            "seafood": "Seafood",
+            "pasta": "Pasta",
+            "side": "Side",
+            "starter": "Starter",
+            "vegan": "Vegan",
+            "vegetarian": "Vegetarian",
+            "dessert": "Dessert"
+        }
     }
 }

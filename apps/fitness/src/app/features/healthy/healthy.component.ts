@@ -5,11 +5,12 @@ import { SectionNameComponent } from '../../shared/ui/section-name/sectionName.c
 import { CarouselComponent } from '../../shared/components/ui/carousel/carousel.component';
 import { MealsService, ICategory, IMeal } from './services/meals.service';
 import { CommonModule } from '@angular/common';
+import {  TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-healthy',
   standalone: true,
-  imports: [SectionNameComponent, CommonModule, NgOptimizedImage, CarouselComponent],
+  imports: [SectionNameComponent, CommonModule, NgOptimizedImage, CarouselComponent, TranslatePipe],
   templateUrl: './healthy.component.html',
   styleUrl: './healthy.component.scss',
 })
