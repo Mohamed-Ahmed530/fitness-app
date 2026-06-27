@@ -1,34 +1,67 @@
 <section class="bg-[url(/images/workout-background.jpg)] bg-cover bg-center relative px-21.5">
     <div class="relative z-2">
-        <app-section-name 
-            [sectionName]="'home.workoutsSection.name' | translate" 
-            [sectionTitle]="'home.workoutsSection.title' | translate"
-            [centerAlignment]="true">
+        <app-section-name [sectionName]="'home.workoutsSection.name' | translate"
+            [sectionTitle]="'home.workoutsSection.title' | translate" [centerAlignment]="true">
         </app-section-name>
     </div>
 
- 
     <div class="bg-[#a5a5a5] dark:bg-gray-900 w-full h-70 absolute top-17 left-0 right-0 z-1"></div>
-   
+
     <div class="relative z-1">
         <h3 class="text-center font-Baloo-Thambi-2 font-bold text-4xl text-gray-900 dark:text-gray-100 mb-8">
             {{ 'home.workoutsSection.headingPart1' | translate }} <br>
-            {{ 'home.workoutsSection.headingPart2' | translate }} 
+            {{ 'home.workoutsSection.headingPart2' | translate }}
             <span class="text-main">{{ 'home.workoutsSection.headingPart3' | translate }}</span>
         </h3>
 
-         
 
-   <div class="flex justify-center items-center flex-wrap gap-4 mb-8">
-    @for (tab of tabs; track $index) {
-        <app-tab 
-            [tabName]="tab" 
-            [isActive]="activeTab() === tab" 
-            (tabClick)="clickk(tab)">
-        </app-tab>
-    }
-</div>
+        <div class="flex justify-center items-center gap-2 w-full lg:w-200 max-w-6xl mx-auto px-4 overflow-hidden mb-6">
 
-        <app-carousel [rowsPerColumn]="1" [carouselItems]="workouts()"></app-carousel> 
+            <div class="shrink-0">
+                <app-tab [tabName]="'home.workoutsSection.fullBody' | translate"
+                    [isActive]="activeTab() === 'full body'" (tabClick)="getFullBodyWorkout()"></app-tab>
+            </div>
+
+            <div class="flex-1 min-w-0">
+                <p-carousel [showIndicators]="false" [value]="musclesGroup()" [numVisible]="5" [numScroll]="3"
+                    [circular]="true" [responsiveOptions]="responsiveOptions">
+                    <ng-template let-muscle #item>
+                        <div class="px-1"> <app-tab [tabName]="muscle.name" [isActive]="activeTab() === muscle.name"
+                                (tabClick)="getMuscles(muscle)">
+                            </app-tab>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+
+        </div>
+        @if (isLoading()){
+        <div class="pb-10">
+            <p-carousel [showNavigators]="false" [showIndicators]="false"  [value]="skeletonArray" [numVisible]="3" [numScroll]="1"
+                [circular]="true" [responsiveOptions]="responsiveOptionsSkeleton">
+                <ng-template let-skel #item>
+                    <div class="flex justify-center items-center">
+                        <p-skeleton  class="w-full h-99! mx-1.5" />
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+        }@else {
+        @if (muscles().length==0) {
+        <div class="flex flex-col items-center justify-center py-3 px-4 text-center">
+            <i class="pi pi-info-circle text-gray-900 bg-main/60 rounded-full! dark:text-gray-100 text-5xl! mb-3!"></i>
+            <p
+                class="text-gray-900 bg-main/60 rounded-full px-2 dark:text-gray-100 font-Baloo-Thambi-2 font-extrabold text-4xl">
+                {{ 'home.workoutsSection.noMuscles' | translate }}
+            </p>
+        </div>
+        }@else{
+        <app-carousel [rowsPerColumn]="1" [carouselItems]="muscles()"
+            defaultImage="images/muscle-default.png"></app-carousel>
+
+        }
+
+        }
+
     </div>
 </section>

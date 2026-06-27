@@ -32,7 +32,7 @@ export class ProfileCardComponent implements OnDestroy {
   }
 
   updateAnswer(answer: string) {
-    if (this.cardTitle() === 'your goal') {
+    if (this.cardTitle() === 'yourGoal') {
       this._authService.editProfile({ goal: answer }).pipe(takeUntil(this.destroy$)).subscribe({
         next: (res) => {
           console.log(res);

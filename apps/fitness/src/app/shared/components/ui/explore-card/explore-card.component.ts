@@ -16,5 +16,6 @@ export interface IExploreCard {
 })
 export class ExploreCardComponent {
   data = input.required<IExploreCard>();
+  fallbackImage = input<string>('images/muscle-default.png');
 }
 

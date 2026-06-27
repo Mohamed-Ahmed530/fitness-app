@@ -64,12 +64,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   }
   getTheme(){
-    if (localStorage.getItem('theme')) {
-      this.currentMode.set(localStorage.getItem('theme')!);
+    const theme= localStorage.getItem('theme');
+    if (theme) {
+      this.currentMode.set(theme!);
     }else{
       this.currentMode.set('light');
     }
-    
+      theme=='light'?this.checked = false:this.checked = true;
   }
 
   toggleTheme() {

@@ -9,7 +9,13 @@
 
     <button
         class="mt-4 w-full h-12 flex items-center justify-between gap-15 px-4 rounded-[20px] border dark:border-gray-200 border-gray-900 bg-main">
-        <span class="font-bold text-nowrap capitalize text-gray-900 dark:text-gray-300">{{ userInfoResponse() }}</span>
+        <span class="font-bold text-nowrap capitalize text-gray-900 dark:text-gray-300">
+            @if (cardTitle() === 'yourGoal') {
+                {{ 'profile.answers.goals.' + userInfoResponse() | translate }}
+            }@else {
+                {{ userInfoResponse() }}
+            }
+        </span>
         <img [src]="_themeService.theme() === 'dark' ? '/icons/arrowCircleWhite.png' : '/icons/arrowCircleGray.png'"
             class="w-4.5 h-5.25" alt="icon">
     </button>
@@ -17,14 +23,14 @@
 
 <p-dialog [showHeader]="false" [closable]="true" [(visible)]="visible" [modal]="true" [style]="{ width: '561px'}">
 
-    @if (cardTitle() == "your goal") {
+    @if (cardTitle() == "yourGoal") {
     <app-user-plan (saveAnswer)="updateAnswer($event)" [question]="'profile.questions.goalQuestion' | translate"
         [answers]="[
-                'profile.answers.goals.gainWeight' | translate,
-                'profile.answers.goals.loseWeight' | translate,
-                'profile.answers.goals.getFitter' | translate,
-                'profile.answers.goals.flexible' | translate,
-                'profile.answers.goals.basics' | translate
+                'profile.answers.goals.gainWeight',
+                'profile.answers.goals.loseWeight',
+                'profile.answers.goals.getFitter',
+                'profile.answers.goals.flexible',
+                'profile.answers.goals.basics'
             ]">
     </app-user-plan>
     }

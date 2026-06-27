@@ -53,7 +53,9 @@
             "title": "التمارين الرياضية",
             "headingPart1": "غيّر مظهر جسدك من خلال",
             "headingPart2": "تماريننا الحماسية ",
-            "headingPart3": "القادمة"
+            "headingPart3": "القادمة",
+            "fullBody": "الجسم كامل",
+            "noMuscles":"لا توجد تمارين متاحة لهذه العضلة حالياً"
         },
         "whyUsSection": {
             "subtitle": "لماذا تختارنا؟",
@@ -102,7 +104,7 @@
     },
     "profile": {
         "cards": {
-            "your goal": "الهدف الحالي",
+            "yourGoal": "الهدف الحالي",
             "level": "مستوى اللياقة",
             "weight": "الوزن الحالي"
         },
@@ -136,8 +138,8 @@
             "light": "مضيء",
             "logout": "تسجيل الخروج",
             "tapToChange": "اضغط للتغيير",
-            "personalizedPlanSubtitle":"هذا يساعدنا على تصميم خطتك المخصصة.",
-            "save":"حفظ"
+            "personalizedPlanSubtitle": "هذا يساعدنا على تصميم خطتك المخصصة.",
+            "save": "حفظ"
         }
     },
     "auth": {
@@ -151,7 +153,12 @@
             "submitButton": "دخول",
             "noAccountText": "ليس لديك حساب بعد؟",
             "registerLink": "سجّل الآن"
-        }
+        },
+        "successTitle": "نجاح",
+        "navigating": "جاري الانتقال إلى الصفحة الرئيسية...",
+        "errorTitle": "خطأ",
+        "logIn": "تسجيل الدخول",
+        "signUp": "إنشاء حساب"
     },
     "accountOptions": {
         "logoutConfirm": "هل أنت متأكد أنك تريد تسجيل الخروج؟",

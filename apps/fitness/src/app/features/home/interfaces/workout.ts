@@ -1,0 +1,27 @@
+export interface Muscles {
+  message: string;
+  musclesGroup: MuscleGroup[];
+}
+
+export interface MuscleById {
+  message: string;
+  muscleGroup: MuscleGroup;
+  muscles: Muscle[];
+}
+
+export interface Muscle {
+  _id: string;
+  name: string;
+  image: string;
+}
+
+export interface MuscleGroup {
+  _id: string;
+  name: string;
+}
+export interface RondomMuscles {
+  message: string;
+  totalMuscles: number;
+  muscles: Muscle[];
+}
+

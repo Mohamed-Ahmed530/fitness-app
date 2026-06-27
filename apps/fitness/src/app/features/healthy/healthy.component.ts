@@ -26,7 +26,8 @@ export class HealthyComponent implements OnInit {
   totalPages = computed(() => Math.ceil(this.meals().length / 6));
   
   allExploreCards = computed(() => this.meals().map(meal => ({
-    title: meal.strMeal.toUpperCase(),
+    _id: meal.idMeal,
+    name: meal.strMeal.toUpperCase(),
     image: meal.strMealThumb,
     link: `/healthy/meal/${meal.idMeal}`
   })));
@@ -47,7 +48,8 @@ export class HealthyComponent implements OnInit {
     this.loading.set(true);
     this.mealsService.getMealsByCategory(category).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (res) => {
-        this.meals.set(res.meals || []);
+        this.meals.set(res.meals||[]);
+        console.log(res);
         this.loading.set(false);
       },
       error: () => {

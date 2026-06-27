@@ -1,4 +1,4 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { InputComponent } from 'apps/fitness/src/app/shared/components/ui/input/input.component';
@@ -13,17 +13,17 @@ import { CookieService } from 'ngx-cookie-service';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule,TranslatePipe],
+  imports: [ReactiveFormsModule, RouterLink, InputComponent, AuthHeaderComponent, SocialAuthComponent, ButtonComponent, ErrorMessageComponent, ButtonModule, ToastModule, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [MessageService]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   private readonly _authService = inject(AuthService);
   private readonly _formBuilder = inject(FormBuilder);
@@ -31,6 +31,7 @@ export class LoginComponent {
   private destroy$ = new Subject<void>();
   private readonly cookieService = inject(CookieService);
   private readonly messageService = inject(MessageService);
+  private readonly translate = inject(TranslateService);
 
 
   togglePassword: WritableSignal<boolean> = signal(false);
@@ -68,7 +69,15 @@ export class LoginComponent {
           .pipe(takeUntil(this.destroy$), finalize(() => this.loading.set(false))).subscribe({
             next: (res) => {
               if (res.message === "success") {
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Navigate to home...' });
+                const successTitle = this.translate.instant('auth.successTitle');
+                const successDetail = this.translate.instant('auth.navigating');
+
+                this.messageService.add({ 
+                  severity: 'success', 
+                  summary: successTitle, 
+                  detail: successDetail 
+                });
+                // this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Navigate to home...' });
 
                 timer(2000).pipe(takeUntil(this.destroy$)).subscribe(() => {
                   this.cookieService.set('fitness-access-token', res.token);
@@ -81,7 +90,14 @@ export class LoginComponent {
             },
             error: (err: HttpErrorResponse) => {
               if (err.error.error) {
-                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.error });
+                const errorTitle = this.translate.instant('auth.errorTitle');
+                
+                this.messageService.add({ 
+                  severity: 'error', 
+                  summary: errorTitle, 
+                  detail: err.error.error 
+                });
+                // this.messageService.add({ severity: 'error', summary: 'Error', detail: err.error.error });
               }
             }
           })
@@ -97,6 +113,10 @@ export class LoginComponent {
     this.togglePassword.update(prev => !prev);
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 
 

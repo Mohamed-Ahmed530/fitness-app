@@ -1,9 +1,9 @@
 <div (click)="settingsType() == 'logout' || settingsType() == 'change password' || settingsType() == 'select language' ? showDialog() : null"
-    class=" mx-auto cursor-pointer w-52.25 h-42 rounded-2xl border dark:border-gray-200 border-gray-900 flex flex-col gap-4 justify-center items-center capitalize font-semibold text-lg">
+    class="mx-auto cursor-pointer w-52.25 h-42 rounded-2xl border dark:border-gray-200 border-gray-900 flex flex-col gap-4 justify-center items-center capitalize font-semibold text-lg">
     <i class="pi text-xl! text-main!" [class]="icon()"></i>
     <ng-content></ng-content>
 </div>
-<p-dialog styleClass="bg-gray-100! dark:bg-gray-900!" [(visible)]="visible" [modal]="true" 
+<p-dialog styleClass="bg-gray-100! dark:bg-gray-900! min-w-[300px]!" [(visible)]="visible" [modal]="true" 
 (onHide)="changePassForm.reset()">
  <div class="text-gray-900 dark:text-white  bg-gray-100 dark:bg-gray-900 rounded-xl">
     @if (settingsType()=='logout') {
@@ -20,7 +20,7 @@
         </div>
     }
     @if (settingsType()=='change password') {
-        <p class="text-3xl font-Baloo-Thambi-2 text-start">{{ 'accountOptions.changePassword' | translate }}</p>
+        <p class="text-3xl font-Baloo-Thambi-2 text-start text-main mb-3 font-semibold">{{ 'accountOptions.changePassword' | translate }}</p>
          <form class="flex flex-col justify-center items-center gap-2" [formGroup]="changePassForm" (ngSubmit)="submitForm()">
         <!-- password -->
         <div class="mt-2">
@@ -60,7 +60,7 @@
     }
     @if(settingsType()=='select language'){
         <div class="flex flex-col gap-2 justify-center items-start px-2 ">
-        <p class="text-3xl font-Baloo-Thambi-2 text-start">{{ 'accountOptions.chooseLanguage' | translate }}</p>
+        <p class="text-3xl font-Baloo-Thambi-2 text-start mb-3 text-main font-semibold">{{ 'accountOptions.chooseLanguage' | translate }}</p>
 
             <div class="flex gap-2 justify-center items-center text-2xl ">
                 <input [(ngModel)]="langCurrent" [checked]='langCurrent === "en"' (change)='changeLang()' value='en' class="accent-main" type="radio" name="lang" id="en">
