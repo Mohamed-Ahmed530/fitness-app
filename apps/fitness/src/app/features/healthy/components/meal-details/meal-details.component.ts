@@ -4,7 +4,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MealsService, IMeal } from '../../services/meals.service';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface IMealDetail extends IMeal {
   strInstructions: string;
@@ -14,7 +14,7 @@ export interface IMealDetail extends IMeal {
 @Component({
   selector: 'app-meal-details',
   standalone: true,
-  imports: [CommonModule, RouterLink, CarouselModule, TranslateModule],
+  imports: [CommonModule, RouterLink, CarouselModule, TranslatePipe],
   templateUrl: './meal-details.component.html',
   styleUrl: './meal-details.component.scss',
 })
