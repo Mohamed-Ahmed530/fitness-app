@@ -1,0 +1,23 @@
+:host {
+    display: block;
+}
+
+.pagination-dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.active-dot {
+    width: 35px;
+    background-color: var(--color-main);
+    opacity: 1;
+}
