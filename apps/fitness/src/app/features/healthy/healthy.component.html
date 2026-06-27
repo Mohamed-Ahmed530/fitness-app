@@ -1,8 +1,8 @@
-<section class="relative min-h-screen py-32 px-4 md:px-20 overflow-hidden flex flex-col items-center">
+<section class="relative min-h-screen py-32 px-4 md:px-20 overflow-hidden flex flex-col items-center bg-white dark:bg-black transition-colors duration-300">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
         <img ngSrc="/images/healthy-bg.jpg" alt="Healthy Background" fill class="object-cover" priority>
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="absolute inset-0 bg-white/70 dark:bg-black/60 backdrop-blur-md"></div>
     </div>
 
     <!-- Content -->
@@ -10,26 +10,27 @@
         <div class="w-full h-fit flex justify-center items-center mb-6 text-center">
             <app-section-name 
                 class="w-full block"
-                sectionName="Healthy Nutritions" 
-                sectionTitle="HEALTHY" 
+                [sectionName]="'healthy.name' | translate" 
+                [sectionTitle]="'healthy.title' | translate" 
                 [centerAlignment]="true">
             </app-section-name>
         </div>
 
-        <h3 class="text-center font-Baloo-Thambi-2 font-bold text-3xl md:text-5xl text-white mt-4 mb-8 max-w-3xl leading-tight">
-            FUEL YOUR FITNESS JOURNEY WITH CUSTOMIZED <span class="text-main">MEAL PLANS</span> FOR YOU
+        <h3 class="text-center font-Baloo-Thambi-2 font-bold text-3xl md:text-5xl text-gray-900 dark:text-white mt-4 mb-8 max-w-3xl leading-tight transition-colors duration-300">
+            {{ 'healthy.headingPart1' | translate }} <span class="text-main">{{ 'healthy.headingPart2' | translate }}</span> {{ 'healthy.headingPart3' | translate }}
         </h3>
 
         <!-- Tabs -->
-        <div class="flex items-center justify-center gap-8 mb-12">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-12">
             @for (tab of displayCategories; track tab) {
                 <button 
                     (click)="selectTab(tab)"
                     [class.bg-main]="selectedTab() === tab"
                     [class.text-white]="selectedTab() === tab"
-                    [class.text-gray-300]="selectedTab() !== tab"
-                    class="px-6 py-2 rounded-full font-Baloo-Thambi-2 font-bold text-lg transition-all duration-300 hover:text-white">
-                    {{ tab }}
+                    [class.text-gray-600]="selectedTab() !== tab"
+                    [class.dark:text-gray-300]="selectedTab() !== tab"
+                    class="px-6 py-2 rounded-full font-Baloo-Thambi-2 font-bold text-lg transition-all duration-300 hover:text-main dark:hover:text-white">
+                    {{ 'healthy.tabs.' + tab.toLowerCase() | translate }}
                 </button>
             }
         </div>
@@ -45,8 +46,8 @@
             </div>
 
             @if (meals().length === 0) {
-                <div class="text-white text-center py-20">
-                    <p class="text-xl">No meals found for this category.</p>
+                <div class="text-gray-900 dark:text-white text-center py-20 transition-colors duration-300">
+                    <p class="text-xl">{{ 'healthy.noMeals' | translate }}</p>
                 </div>
             }
         }
